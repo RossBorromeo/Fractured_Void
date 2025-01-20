@@ -1,22 +1,27 @@
-// CharacterController2D
 using UnityEngine;
 using UnityEngine.Events;
 
 public class CharacterController2D : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float jumpForce = 400f; // Jump force
-    [SerializeField] private float movementSpeed = 10f; // Movement speed
-    [SerializeField] private float zMovementSpeed = 10f; // Speed for Z-axis movement
-    [SerializeField] private LayerMask whatIsGround; // Define ground layers
+    [SerializeField] private float jumpForce = 400f;
+    [SerializeField] private float movementSpeed = 10f;
+    [SerializeField] private float zMovementSpeed = 10f;
+    [SerializeField] private LayerMask whatIsGround;
 
     [Header("Physics Settings")]
-    [SerializeField] private float fallMultiplier = 2.5f; // Multiplier to make the character fall faster
+    [SerializeField] private float fallMultiplier = 2.5f;
+    [SerializeField] private float groundCheckRadius = 0.1f;
+
+    [Header("Attack Settings")]
+    [SerializeField] private float attackRange = 1f; // Range of the attack
+    [SerializeField] private float attackDamage = 20f; // Damage dealt by the attack
+    [SerializeField] private LayerMask attackableLayers; // Layers that can be damaged
 
     private Rigidbody rb;
-    private CapsuleCollider capsuleCollider; // Reference to CapsuleCollider
-    private bool isGrounded; // Is the character grounded
-    private bool wasGrounded; // Track previous grounded state
+    private CapsuleCollider capsuleCollider;
+    private bool isGrounded;
+    private bool wasGrounded;
 
     public UnityEvent OnLandEvent;
 
@@ -31,40 +36,34 @@ public class CharacterController2D : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CheckGrounded(); // Check if the character is on the ground
-        ApplyFasterFalling(); // Apply custom falling force to speed up fall
+        isGrounded = CheckGrounded();
+        if (!wasGrounded && isGrounded)
+        {
+            OnLandEvent.Invoke();
+        }
+        wasGrounded = isGrounded;
+
+        ApplyFasterFalling();
     }
 
-    private void CheckGrounded()
+    private bool CheckGrounded()
     {
-        if (capsuleCollider == null) return;
+        if (capsuleCollider == null) return false;
 
-        // Define ground check point (bottom of CapsuleCollider)
         Vector3 bottomPoint = new Vector3(
             capsuleCollider.bounds.center.x,
             capsuleCollider.bounds.min.y,
             capsuleCollider.bounds.center.z
         );
 
-        // Check if the character is grounded using Physics.CheckSphere
-        isGrounded = Physics.CheckSphere(bottomPoint, 0.1f, whatIsGround);
-
-        // Trigger OnLandEvent only if landing (transition from not grounded to grounded)
-        if (!wasGrounded && isGrounded)
-        {
-            OnLandEvent.Invoke();
-        }
-
-        wasGrounded = isGrounded;
+        return Physics.CheckSphere(bottomPoint, groundCheckRadius, whatIsGround);
     }
 
     public void Move(float moveX, float moveZ, bool jump)
     {
-        // Horizontal movement (x-axis and z-axis)
         Vector3 velocity = new Vector3(moveX * movementSpeed, rb.velocity.y, moveZ * zMovementSpeed);
         rb.velocity = velocity;
 
-        // Jumping logic (vertical movement)
         if (isGrounded && jump)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -74,10 +73,24 @@ public class CharacterController2D : MonoBehaviour
 
     private void ApplyFasterFalling()
     {
-        // If the character is falling (not moving up), apply custom gravity to speed up falling
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+    }
+
+    public void Attack()
+    {
+        // Check for enemies within the attack range
+        Collider[] hitObjects = Physics.OverlapSphere(transform.position, attackRange, attackableLayers);
+        foreach (Collider hit in hitObjects)
+        {
+            Health targetHealth = hit.GetComponent<Health>();
+            if (targetHealth != null)
+            {
+                targetHealth.Damage(attackDamage);
+                Debug.Log($"Hit {hit.name} for {attackDamage} damage.");
+            }
         }
     }
 
@@ -92,7 +105,11 @@ public class CharacterController2D : MonoBehaviour
             );
 
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(bottomPoint, 0.1f); // Visualize ground check
+            Gizmos.DrawWireSphere(bottomPoint, groundCheckRadius);
         }
+
+        // Visualize attack range
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }

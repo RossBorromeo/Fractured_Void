@@ -22,12 +22,11 @@ public class PlayerMovement : MonoBehaviour
 
         float horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
         float verticalMove = Input.GetAxisRaw("Vertical") * speed;
-
+        
         moveDirection = new Vector2(horizontalMove, verticalMove);
 
         // Update animator parameters
-        animator.SetFloat("HorizontalSpeed", Mathf.Abs(horizontalMove));
-        animator.SetFloat("VerticalSpeed", Mathf.Abs(verticalMove));
+       
         animator.SetFloat("Speed", moveDirection.magnitude);
 
         // Flip character sprite if direction changes
