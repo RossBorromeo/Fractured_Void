@@ -2,48 +2,46 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController2D controller; // Reference to the custom CharacterController2D
+    public CharacterController2D controller;
     public Animator animator;
-    public float walkSpeed = 40f;
-    public float runMultiplier = 1.5f; // Multiplier for running speed
 
-    private Vector2 moveDirection = Vector2.zero; // Stores movement direction
+    [Header("Movement Settings")]
+    public float walkSpeed = 40f;
+    public float runMultiplier = 1.5f;
+
+    private Vector2 moveDirection = Vector2.zero;
     private bool jump = false;
-    private bool facingRight = true; // Tracks the current facing direction
+    private bool facingRight = true;
 
     void Update()
     {
-        // Handle movement input
-        float speed = walkSpeed;
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            speed *= runMultiplier; // Apply running speed multiplier
-        }
+        // Handle running
+        float speed = Input.GetKey(KeyCode.LeftShift) ? walkSpeed * runMultiplier : walkSpeed;
 
+        // Movement input
         float horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
         float verticalMove = Input.GetAxisRaw("Vertical") * speed;
-        
         moveDirection = new Vector2(horizontalMove, verticalMove);
 
         // Update animator parameters
-       
         animator.SetFloat("Speed", moveDirection.magnitude);
+        animator.SetBool("IsGrounded", controller.isGrounded);
 
         // Flip character sprite if direction changes
         if (horizontalMove > 0 && !facingRight)
         {
-            Flip();
+            Flip(); // Flip to face right
         }
         else if (horizontalMove < 0 && facingRight)
         {
-            Flip();
+            Flip(); // Flip to face left
         }
 
-        // Handle jump input
-        if (Input.GetButtonDown("Jump"))
+        // Handle jumping
+        if (Input.GetButtonDown("Jump") && controller.isGrounded)
         {
             jump = true;
-            animator.SetBool("IsJumping", true); // Trigger jump animation
+            animator.SetBool("IsJumping", true); // Set IsJumping to true when jumping
         }
     }
 
@@ -51,12 +49,13 @@ public class PlayerMovement : MonoBehaviour
     {
         // Pass movement and jump parameters to the controller
         controller.Move(moveDirection.x * Time.fixedDeltaTime, moveDirection.y * Time.fixedDeltaTime, jump);
+
         jump = false; // Reset jump state after applying
     }
 
     public void OnLanding()
     {
-        // Reset jumping animation upon landing
+        // Reset IsJumping animation upon landing
         animator.SetBool("IsJumping", false);
     }
 

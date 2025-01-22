@@ -37,5 +37,10 @@ public class Health : MonoBehaviour
         Debug.Log($"{gameObject.name} has died.");
         Destroy(gameObject); // Destroy the object (optional)
     }
+
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
 }
 

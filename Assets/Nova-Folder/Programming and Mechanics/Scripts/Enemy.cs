@@ -1,154 +1,147 @@
+using System.Collections;
 using UnityEngine;
 
-public class SimpleEnemyMovement : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    [SerializeField] private Transform pointA; // First patrol point
-    [SerializeField] private Transform pointB; // Second patrol point
-    [SerializeField] private float speed = 2f; // Movement speed
-    [SerializeField] private float stopTime = 2f; // Time to stop at each patrol point
-    private Transform currentTarget; // Current destination point
-    private bool isMoving = true; // Is the enemy currently moving?
-
-    [Header("Physics Settings")]
-    [SerializeField] private Rigidbody rb; // Reference to Rigidbody
-    [SerializeField] private float groundCheckRadius = 0.2f; // Radius for ground check
-    [SerializeField] private LayerMask groundLayer; // Layer for ground detection
-    private bool isGrounded; // Is the enemy on the ground?
+    [Header("Patrol Settings")]
+    [SerializeField] private Transform pointA;
+    [SerializeField] private Transform pointB;
+    [SerializeField] private float patrolSpeed = 2f;
+    [SerializeField] private float stopDuration = 2f;
+    private Transform currentTarget;
+    private bool isMoving = true;
 
     [Header("Animation Settings")]
-    [SerializeField] private Animator animator; // Reference to Animator component
+    [SerializeField] private Animator animator;
 
-    [Header("Rotation Settings")]
-    [SerializeField] private Vector3 fixedRotation = Vector3.forward; // Default facing direction
+    [Header("Health Component")]
+    private Health health;
+    private bool isDead = false;
 
     private void Start()
     {
-        // Ensure Rigidbody is assigned
-        rb = GetComponent<Rigidbody>();
+        // Initialize health
+        health = GetComponent<Health>();
+        if (health == null)
+        {
+            Debug.LogError("[Enemy] Missing Health component!");
+        }
 
-        // Set the initial target to pointA
-        currentTarget = pointA;
-
-        // Freeze unnecessary Rigidbody rotations
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
-
-        // Ensure Animator is assigned
+        // Initialize animator
+        animator = GetComponent<Animator>();
         if (animator == null)
         {
-            animator = GetComponent<Animator>();
+            Debug.LogError("[Enemy] Missing Animator component!");
         }
+
+        // Set initial patrol target
+        currentTarget = pointA;
     }
 
     private void FixedUpdate()
     {
-        CheckGrounded();
+        if (isDead) return;
 
-        if (isGrounded && isMoving)
+        // Patrol logic
+        if (isMoving)
         {
-            MoveTowardsTarget();
+            Patrol();
         }
-
-        UpdateAnimator();
     }
 
-    private void MoveTowardsTarget()
+    private void Patrol()
     {
         if (currentTarget == null) return;
 
-        // Calculate direction to the current target
-        Vector3 direction = (currentTarget.position - transform.position);
-        direction.y = 0; // Ignore Y-axis to prevent tilting
+        // Move towards the current target
+        Vector3 direction = (currentTarget.position - transform.position).normalized;
+        transform.position += direction * patrolSpeed * Time.deltaTime;
 
-        // Check if the enemy is close to the target
-        if (direction.magnitude < 0.5f)
+        // Check if close to the target
+        if (Vector3.Distance(transform.position, currentTarget.position) < 0.2f)
         {
-            rb.velocity = Vector3.zero; // Stop the enemy completely
-
-            if (currentTarget == pointB)
-            {
-                Debug.Log("Fully stopped at point B.");
-                transform.rotation = Quaternion.LookRotation(fixedRotation); // Face the specified direction
-            }
-
             StartCoroutine(SwitchTargetWithDelay());
-            return;
         }
 
-        // Normalize direction for consistent movement
-        direction.Normalize();
-
-        // Apply velocity to the Rigidbody
-        rb.velocity = new Vector3(direction.x * speed, rb.velocity.y, direction.z * speed);
+        // Update Animator Speed
+        if (animator != null)
+        {
+            animator.SetFloat("Speed", patrolSpeed);
+        }
     }
 
-    private System.Collections.IEnumerator SwitchTargetWithDelay()
+    private IEnumerator SwitchTargetWithDelay()
     {
-        isMoving = false; // Stop movement during the delay
-        Debug.Log($"Stopping at {currentTarget.name} for {stopTime} seconds.");
-        yield return new WaitForSeconds(stopTime); // Wait at the patrol point
+        isMoving = false;
+
+        // Stop movement and play idle animation
+        if (animator != null)
+        {
+            animator.SetFloat("Speed", 0f);
+        }
+
+        yield return new WaitForSeconds(stopDuration);
 
         // Switch to the next target
         currentTarget = currentTarget == pointA ? pointB : pointA;
-        Debug.Log($"Switching target to: {currentTarget.name}");
-        isMoving = true; // Resume movement
+        isMoving = true;
     }
 
-    private void UpdateAnimator()
+    public void TakeDamage(float damage)
     {
-        // Calculate current movement speed (magnitude of velocity)
-        float currentSpeed = new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude;
+        if (isDead || health == null) return;
 
-        // Clamp small values to zero for clean transitions
-        if (currentSpeed < 0.01f)
+        // Apply damage
+        health.Damage(damage);
+
+        // Trigger Hurt animation
+        if (animator != null)
         {
-            currentSpeed = 0f;
+            animator.SetBool("IsHurt", true);
+            StartCoroutine(ResetHurtAnimation());
         }
 
-        // Update the Speed parameter in the Animator
-        animator.SetFloat("Speed", currentSpeed);
+        // Check if the enemy is dead
+        if (health.GetCurrentHealth() <= 0)
+        {
+            HandleDeath();
+        }
     }
 
-    private void CheckGrounded()
+    private IEnumerator ResetHurtAnimation()
     {
-        // Use Physics.CheckSphere to detect ground
-        CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
-        if (capsuleCollider != null)
+        yield return new WaitForSeconds(0.5f); // Adjust based on hurt animation duration
+        if (animator != null)
         {
-            Vector3 groundCheckPosition = new Vector3(
-                capsuleCollider.bounds.center.x,
-                capsuleCollider.bounds.min.y - 0.1f,
-                capsuleCollider.bounds.center.z
-            );
-            isGrounded = Physics.CheckSphere(groundCheckPosition, groundCheckRadius, groundLayer);
+            animator.SetBool("IsHurt", false);
         }
-        else
+    }
+
+    private void HandleDeath()
+    {
+        if (isDead) return;
+        isDead = true;
+
+        // Trigger death animation
+        if (animator != null)
         {
-            Debug.LogWarning("CapsuleCollider not found on the enemy!");
-            isGrounded = true; // Assume grounded if no collider
+            animator.SetBool("IsDead", true);
         }
+
+        // Disable movement
+        isMoving = false;
+
+        // Destroy enemy after death animation
+        Destroy(gameObject, 2f);
     }
 
     private void OnDrawGizmosSelected()
     {
-        // Draw lines between the enemy and its patrol points
+        // Draw patrol points
+        Gizmos.color = Color.green;
         if (pointA != null && pointB != null)
         {
-            Gizmos.color = Color.green;
             Gizmos.DrawLine(pointA.position, pointB.position);
-        }
-
-        // Draw ground check sphere
-        Gizmos.color = Color.blue;
-        CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
-        if (capsuleCollider != null)
-        {
-            Vector3 groundCheckPosition = new Vector3(
-                capsuleCollider.bounds.center.x,
-                capsuleCollider.bounds.min.y - 0.1f,
-                capsuleCollider.bounds.center.z
-            );
-            Gizmos.DrawWireSphere(groundCheckPosition, groundCheckRadius);
         }
     }
 }

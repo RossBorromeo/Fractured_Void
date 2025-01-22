@@ -4,48 +4,58 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private GameObject attackArea = default;
+    [Header("Attack Settings")]
+    public GameObject attackArea; // Reference to the attack area
+    public Animator animator;     // Reference to the Animator
+    public float timeToAttack = 0.5f; // Time for the attack to complete
+
     private bool attacking = false;
-
-    private float timeToAttack = 0.25f;
-    private float attackTimer = 0;
-
-    private Animator animator; // Reference to Animator
 
     void Start()
     {
-        // Reference the child object for the attack area
-        attackArea = transform.GetChild(0).gameObject;
-        // Reference the Animator component
-        animator = GetComponent<Animator>();
+        if (attackArea != null)
+        {
+            attackArea.SetActive(false); // Ensure attack area starts disabled
+        }
     }
 
+
+
+    
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !attacking)
         {
             Attack();
-        }
-
-        if (attacking)
-        {
-            attackTimer += Time.deltaTime;
-
-            if (attackTimer >= timeToAttack)
-            {
-                attacking = false;
-                attackTimer = 0;
-                attackArea.SetActive(attacking);
-            }
         }
     }
 
     private void Attack()
     {
         attacking = true;
-        attackArea.SetActive(attacking);
 
         // Trigger the attack animation
         animator.SetTrigger("Attack");
+
+        // Enable the attack area during the attack
+        if (attackArea != null)
+        {
+            attackArea.SetActive(true);
+        }
+
+        // Disable the attack area and reset after the attack is complete
+        StartCoroutine(DisableAttackArea());
+    }
+
+    private IEnumerator DisableAttackArea()
+    {
+        yield return new WaitForSeconds(timeToAttack); // Wait for the attack to complete
+
+        if (attackArea != null)
+        {
+            attackArea.SetActive(false); // Disable the attack area
+        }
+
+        attacking = false;
     }
 }
