@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 moveDirection = Vector2.zero;
     private bool jump = false;
-    private bool facingRight = true;
+    private bool facingLeft = true;
 
     void Update()
     {
@@ -28,11 +28,11 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("IsGrounded", controller.isGrounded);
 
         // Flip character sprite if direction changes
-        if (horizontalMove > 0 && !facingRight)
+        if (horizontalMove > 0 && facingLeft)
         {
             Flip(); // Flip to face right
         }
-        else if (horizontalMove < 0 && facingRight)
+        else if (horizontalMove < 0 && !facingLeft)
         {
             Flip(); // Flip to face left
         }
@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
     private void Flip()
     {
         // Reverse the facing direction
-        facingRight = !facingRight;
+        facingLeft = !facingLeft;
 
         // Flip the character's local scale on the X-axis
         Vector3 theScale = transform.localScale;
