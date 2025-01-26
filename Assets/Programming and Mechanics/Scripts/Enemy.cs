@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -101,6 +101,11 @@ public class Enemy : MonoBehaviour
             StartCoroutine(ResetHurtAnimation());
         }
 
+        else
+        {
+            Debug.Log("Animator not activated");
+        }
+
         // Check if the enemy is dead
         if (health.GetCurrentHealth() <= 0)
         {
@@ -110,10 +115,14 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator ResetHurtAnimation()
     {
-        yield return new WaitForSeconds(0.5f); // Adjust based on hurt animation duration
+        yield return new WaitForSeconds(10.0f); // Adjust based on hurt animation duration
         if (animator != null)
         {
             animator.SetBool("IsHurt", false);
+        }
+        else
+        {
+            Debug.Log("Animator not activated");
         }
     }
 
@@ -126,6 +135,10 @@ public class Enemy : MonoBehaviour
         if (animator != null)
         {
             animator.SetBool("IsDead", true);
+        }
+        else
+        {
+            Debug.Log("Animator not activated");
         }
 
         // Disable movement
