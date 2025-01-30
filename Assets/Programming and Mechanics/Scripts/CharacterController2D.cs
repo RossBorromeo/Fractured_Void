@@ -51,8 +51,9 @@ public class CharacterController2D : MonoBehaviour
             capsuleCollider.bounds.min.y - 0.1f, // Lower the check position slightly
             capsuleCollider.bounds.center.z
         );
-
+        Debug.Log("Character is grounded");
         return Physics.CheckSphere(bottomPoint, groundCheckRadius, whatIsGround);
+        
     }
 
     public void Move(float moveX, float moveZ, bool jump)
