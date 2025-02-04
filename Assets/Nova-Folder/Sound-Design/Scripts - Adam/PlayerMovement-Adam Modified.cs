@@ -9,10 +9,16 @@ public class PlayerMovement : MonoBehaviour
     public float walkSpeed = 40f;
     public float runMultiplier = 1.5f;
 
+    //     --Adam Audio Input
+    public AudioSource audioSource; // Source of sound
+    public AudioClip jumpSound; // Audio for jump sound
+    public AudioClip movementSound; //  Audio for moving sound
+
     private Vector2 moveDirection = Vector2.zero;
     private bool jump = false;
     private bool facingLeft = true;
 
+    private bool isMoving = false;      //  ----  Adam
     void Update()
     {
         // Handle running
@@ -21,7 +27,33 @@ public class PlayerMovement : MonoBehaviour
         // Movement input
         float horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
         float verticalMove = Input.GetAxisRaw("Vertical") * speed;
+        
         moveDirection = new Vector2(horizontalMove, verticalMove);
+
+        //  --  Adam Check if player is moving
+        bool currentlyMoving = moveDirection.magnitude > 0;
+
+        if (currentlyMoving && !isMoving)
+        {
+            // Start playing movement sound
+            if (audioSource != null && movementSound != null)
+            {
+                audioSource.clip = movementSound;
+                audioSource.loop = true;
+                audioSource.Play();
+            }
+        }
+        else if (!currentlyMoving && isMoving)
+        {
+            // Stop playing movement sound
+            if (audioSource != null && audioSource.clip == movementSound)
+            {
+                audioSource.Stop();
+            }
+        }// ---  Adam
+
+        isMoving = currentlyMoving; // ---  Adam
+
 
         // Update animator parameters
         animator.SetFloat("Speed", moveDirection.magnitude);
@@ -42,6 +74,13 @@ public class PlayerMovement : MonoBehaviour
         {
             jump = true;
             animator.SetBool("IsJumping", true); // Set IsJumping to true when jumping
+
+            //  --  Adam Audio input
+            if (audioSource != null && jumpSound != null)
+            {
+                audioSource.PlayOneShot(jumpSound);
+            }
+
         }
     }
 
