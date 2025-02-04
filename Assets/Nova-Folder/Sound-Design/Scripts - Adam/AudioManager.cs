@@ -9,7 +9,6 @@ using System;
 public enum SoundType
 {
     Jump,
-    Land,
     Attack,
     Footsteps
 }
