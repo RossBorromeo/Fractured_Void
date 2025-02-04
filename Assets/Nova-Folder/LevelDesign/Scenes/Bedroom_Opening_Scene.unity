@@ -5508,10 +5508,12 @@ PrefabInstance:
       propertyPath: attackArea
       value: 
       objectReference: {fileID: 962803517}
-    - target: {fileID: 2430635694246135126, guid: 53ddddc42ed7b434d8d9a9cee9d46af8, type: 3}
-      propertyPath: m_Layer
+      
+    - target: {fileID: 2004768888871427682, guid: 53ddddc42ed7b434d8d9a9cee9d46af8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
       value: 7
-      objectReference: {fileID: 0}
+      
     - target: {fileID: 2760208570418470710, guid: 53ddddc42ed7b434d8d9a9cee9d46af8, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.33308902
@@ -5564,14 +5566,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 1.183
       objectReference: {fileID: 0}
-    - target: {fileID: 3507561439321208544, guid: 53ddddc42ed7b434d8d9a9cee9d46af8, type: 3}
-      propertyPath: m_Layer
+
+    - target: {fileID: 4721158715931778202, guid: 53ddddc42ed7b434d8d9a9cee9d46af8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6597652384172169657, guid: 53ddddc42ed7b434d8d9a9cee9d46af8, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
+   
     - target: {fileID: 6841475483184564308, guid: 53ddddc42ed7b434d8d9a9cee9d46af8, type: 3}
       propertyPath: m_Name
       value: Oliver

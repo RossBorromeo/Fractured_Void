@@ -94,7 +94,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -335,7 +335,6 @@ MonoBehaviour:
     m_Bits: 64
   fallMultiplier: 2.5
   groundCheckRadius: 0.1
-  isGrounded: 0
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -351,6 +350,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6115070f78fca554499a9564d6b2180b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackArea: {fileID: 0}
+  animator: {fileID: 0}
+  timeToAttack: 0.5
 --- !u!114 &7780108259276544644
 MonoBehaviour:
   m_ObjectHideFlags: 0
