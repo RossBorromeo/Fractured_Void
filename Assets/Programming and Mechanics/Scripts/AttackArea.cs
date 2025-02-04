@@ -23,10 +23,7 @@ public class AttackArea : MonoBehaviour
                 Debug.Log($"[AttackArea] {other.name} does not have a Health component.");
             }
         }
-        else
-        {
-            Debug.Log($"[AttackArea] {other.name} is not on the enemy layer.");
-        }
+       
     }
 
     private void OnDrawGizmos()
