@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1101 &-6684988524169738874
+--- !u!1101 &-6797316540051168155
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12,7 +12,7 @@ AnimatorStateTransition:
     m_ConditionEvent: DoorStopped
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -2205312601362798613}
+  m_DstState: {fileID: -638462084944719621}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -25,18 +25,46 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1102 &-4889994428505260362
+--- !u!1107 &-3676438078649079920
+AnimatorStateMachine:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Base Layer
+  m_ChildStates:
+  - serializedVersion: 1
+    m_State: {fileID: -3370071676861813713}
+    m_Position: {x: 200, y: 0, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 6359528825573966804}
+    m_Position: {x: 235, y: 65, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -638462084944719621}
+    m_Position: {x: 250, y: 130, z: 0}
+  m_ChildStateMachines: []
+  m_AnyStateTransitions: []
+  m_EntryTransitions: []
+  m_StateMachineTransitions: {}
+  m_StateMachineBehaviours: []
+  m_AnyStatePosition: {x: 50, y: 20, z: 0}
+  m_EntryPosition: {x: 50, y: 120, z: 0}
+  m_ExitPosition: {x: 800, y: 120, z: 0}
+  m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
+  m_DefaultState: {fileID: -3370071676861813713}
+--- !u!1102 &-3370071676861813713
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DoorIdle
+  m_Name: BedDoorIdle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: 5887992037767746654}
+  - {fileID: 4205240076950046513}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -46,20 +74,20 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 13bf8a46abbcaff44ad3eddc098f3670, type: 2}
+  m_Motion: {fileID: 7400000, guid: d3be0f2acb290c549953a0f344c76153, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-2205312601362798613
+--- !u!1102 &-638462084944719621
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DoorStopped
+  m_Name: BedDoorStop
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -72,7 +100,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b8c4ac4a8f4bd834088b69907800c806, type: 2}
+  m_Motion: {fileID: 7400000, guid: 2bc3fa25069c2784a9bffc33f4b29086, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -84,7 +112,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Door
+  m_Name: doorWing
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: DoorOpen
@@ -102,7 +130,7 @@ AnimatorController:
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
-    m_StateMachine: {fileID: 1636016790613009391}
+    m_StateMachine: {fileID: -3676438078649079920}
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
@@ -112,35 +140,7 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1107 &1636016790613009391
-AnimatorStateMachine:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Base Layer
-  m_ChildStates:
-  - serializedVersion: 1
-    m_State: {fileID: -4889994428505260362}
-    m_Position: {x: 260, y: -10, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 9212930182123403577}
-    m_Position: {x: 260, y: 80, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -2205312601362798613}
-    m_Position: {x: 260, y: 170, z: 0}
-  m_ChildStateMachines: []
-  m_AnyStateTransitions: []
-  m_EntryTransitions: []
-  m_StateMachineTransitions: {}
-  m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 800, y: 120, z: 0}
-  m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -4889994428505260362}
---- !u!1101 &5887992037767746654
+--- !u!1101 &4205240076950046513
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,7 +152,7 @@ AnimatorStateTransition:
     m_ConditionEvent: DoorOpen
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 9212930182123403577}
+  m_DstState: {fileID: 6359528825573966804}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -165,18 +165,18 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1102 &9212930182123403577
+--- !u!1102 &6359528825573966804
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DoorOpening
+  m_Name: BedDoorOpening
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: -6684988524169738874}
+  - {fileID: -6797316540051168155}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -186,7 +186,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: cfdab05de954cc449bb2a382b2778eb5, type: 2}
+  m_Motion: {fileID: 7400000, guid: 35e0dd0ee70de33418cd6f69ed9fd98c, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
