@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public void PlaySound()
+/*public void PlaySound()
 {
     //AudioManager.PlaySound(SoundType.Footsteps);
     AudioSource audioSource = GetComponent<AudioSource>();
@@ -15,3 +15,4 @@ public void PlaySound()
         Debug.LogError("AudioSource component is missing on this GameObject.");
     }
 }
+*/
