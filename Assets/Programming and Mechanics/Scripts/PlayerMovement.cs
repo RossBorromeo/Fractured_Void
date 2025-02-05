@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Health Settings")]
     public Health health;
     private bool isDead = false;
+    public AudioSource audioSource; //Adams bit
 
     void Start()
     {
