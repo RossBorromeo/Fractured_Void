@@ -11,14 +11,14 @@ public class PlayerMovement : MonoBehaviour
 
     //     --Adam Audio Input
     public AudioSource audioSource; // Source of sound
-    public AudioClip jumpSound; // Audio for jump sound
-    public AudioClip movementSound; //  Audio for moving sound
+    // Audio for jump sound
+     //  Audio for moving sound
 
     private Vector2 moveDirection = Vector2.zero;
     private bool jump = false;
     private bool facingLeft = true;
 
-    private bool isMoving = false;      //  ----  Adam
+         //  ----  Adam
     void Update()
     {
         // Handle running
@@ -31,28 +31,11 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = new Vector2(horizontalMove, verticalMove);
 
         //  --  Adam Check if player is moving
-        bool currentlyMoving = moveDirection.magnitude > 0;
+        
 
-        if (currentlyMoving && !isMoving)
-        {
+        
             // Start playing movement sound
-            if (audioSource != null && movementSound != null)
-            {
-                audioSource.clip = movementSound;
-                audioSource.loop = true;
-                audioSource.Play();
-            }
-        }
-        else if (!currentlyMoving && isMoving)
-        {
-            // Stop playing movement sound
-            if (audioSource != null && audioSource.clip == movementSound)
-            {
-                audioSource.Stop();
-            }
-        }// ---  Adam
-
-        isMoving = currentlyMoving; // ---  Adam
+            
 
 
         // Update animator parameters
@@ -75,11 +58,7 @@ public class PlayerMovement : MonoBehaviour
             jump = true;
             animator.SetBool("IsJumping", true); // Set IsJumping to true when jumping
 
-            //  --  Adam Audio input
-            if (audioSource != null && jumpSound != null)
-            {
-                audioSource.PlayOneShot(jumpSound);
-            }
+            
 
         }
     }
