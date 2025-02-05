@@ -20,7 +20,7 @@ public class FallingPlatform : MonoBehaviour
         if (!hasActivated && other.CompareTag("Player")) // Ensures it triggers only once
         {
             hasActivated = true;
-            StartCoroutine(FallAfterDelay(2f)); // Delay before falling
+            StartCoroutine(FallAfterDelay(1f)); // Delay before falling
         }
     }
 
