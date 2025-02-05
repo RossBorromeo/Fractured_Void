@@ -26155,8 +26155,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5479115, y: 1, z: 3.0211747}
-  m_Center: {x: -0.27395543, y: 0, z: -0.0804778}
+  m_Size: {x: 2.056773, y: 1, z: 3.738337}
+  m_Center: {x: -0.528386, y: 0, z: -0.43905893}
 --- !u!1001 &977204106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63574,7 +63574,7 @@ MonoBehaviour:
   platform: {fileID: 149830605}
   riseHeight: 5
   riseSpeed: 2
-  interactionRadius: 10
+  interactionRadius: 15
 --- !u!4 &2143115791 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 87d5047584d3f30419c8839210dbd59c, type: 3}
