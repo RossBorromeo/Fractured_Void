@@ -36,6 +36,14 @@ public class Health : MonoBehaviour
     {
         Debug.Log($"{gameObject.name} has died.");
         Destroy(gameObject); // Destroy the object (optional)
+
+        if(gameObject.CompareTag("Player"))
+        {
+            
+            Application.Quit(); // Quit the game (temporary)
+           
+        }
+        
     }
 
     public float GetCurrentHealth()

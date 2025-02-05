@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Flower
+  - Pillar
+  - PillarTriggerZone
   layers:
   - Default
   - TransparentFX
@@ -15,7 +18,7 @@ TagManager:
   - Terrain
   - Player
   - Enemy
-  - 
+  - EnemyProjectile
   - 
   - 
   - 
