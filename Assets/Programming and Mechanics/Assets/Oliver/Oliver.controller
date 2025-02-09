@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8405657642419214797
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c60802c5badb7940b24e62cf588f56d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: 2
+  volume: 1
 --- !u!1101 &-7745222460012014637
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -70,7 +84,9 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8256302052436168189}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 6468148071539167663}
+  - {fileID: -8405657642419214797}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -151,7 +167,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: -3807909446583221687}
   - {fileID: 1932550536982722842}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 5002315139697442651}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -256,7 +273,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: -470833391940631520}
   - {fileID: 1014492157416536248}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 4615657480214593100}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -351,6 +369,48 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &4615657480214593100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94c8143755e27b4eb9f3dd0d314c541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: 1
+  volume: 1
+--- !u!114 &5002315139697442651
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94c8143755e27b4eb9f3dd0d314c541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: 0
+  volume: 1
+--- !u!114 &6468148071539167663
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94c8143755e27b4eb9f3dd0d314c541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: 2
+  volume: 1
 --- !u!1101 &8193618419434759437
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
