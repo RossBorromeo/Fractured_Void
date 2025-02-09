@@ -9,13 +9,16 @@ EditorBuildSettings:
     path: Assets/Nova-Folder/UserInterface/Scenes/MainMenu.unity
     guid: 2dbbde9752e508a4f8e7c100ea5ac7e5
   - enabled: 1
-    path: Assets/Nova-Folder/UserInterface/Scenes/Bedroom_Opening_Scene.unity
-    guid: 8734263e593695748adfb4c4d0063e93
-  - enabled: 1
-    path: Assets/Nova-Folder/LevelDesign/Scenes/TurretScene.unity
-    guid: 733a12829d14dd044aaf94bbb07eecd6
+    path: Assets/Nova-Folder/LevelDesign/Scenes/Bedroom_Opening_Scene.unity
+    guid: c5b13a9430ac4f247aef25bac319a441
   - enabled: 1
     path: Assets/Nova-Folder/LevelDesign/Scenes/Rose_Garden_Pillar_Area.unity
     guid: 836c2966630d162428acdbb76ae19286
+  - enabled: 1
+    path: Assets/Nova-Folder/LevelDesign/Scenes/TurretScene.unity
+    guid: 733a12829d14dd044aaf94bbb07eecd6
+  - enabled: 0
+    path: Assets/Nova-Folder/UserInterface/Scenes/Bedroom_Opening_Scene.unity
+    guid: 8734263e593695748adfb4c4d0063e93
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
