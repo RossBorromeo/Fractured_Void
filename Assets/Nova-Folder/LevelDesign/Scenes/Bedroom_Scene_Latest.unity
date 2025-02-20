@@ -10123,7 +10123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd5c5b38a96f53419390fba0bfc7497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Movement - Rose Garden
+  sceneName: Rose_Garden_Latest
 --- !u!65 &1352673923
 BoxCollider:
   m_ObjectHideFlags: 0
