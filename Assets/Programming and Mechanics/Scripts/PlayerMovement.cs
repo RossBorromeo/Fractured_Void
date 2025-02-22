@@ -4,15 +4,15 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D controller;
     public Animator animator;
-    public Mabel mabel; // Reference to the Mabel script on the doll
+    public Mabel mabel;
 
     [Header("Movement Settings")]
     public float walkSpeed = 40f;
     public float runMultiplier = 1.5f;
-
     private Vector2 moveDirection = Vector2.zero;
     private bool jump = false;
     private bool facingLeft = true;
+    private bool isRotated = false;
 
     [Header("Health Settings")]
     public Health health;
@@ -20,11 +20,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        if (mabel == null)
-        {
-            Debug.LogError("[PlayerMovement] Mabel reference is missing!");
-        }
-
         if (health == null)
         {
             health = GetComponent<Health>();
@@ -39,19 +34,23 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isDead) return;
 
-        // Handle running
         float speed = Input.GetKey(KeyCode.LeftShift) ? walkSpeed * runMultiplier : walkSpeed;
+        float horizontalMove = Input.GetAxisRaw("Horizontal") * speed; // A/D
+        float verticalMove = Input.GetAxisRaw("Vertical") * speed;     // W/S
 
-        // Movement input
-        float horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
-        float verticalMove = Input.GetAxisRaw("Vertical") * speed;
-        moveDirection = new Vector2(horizontalMove, verticalMove);
+        if (isRotated)
+        {
+            // Reverse W/S movement in side profile mode
+            moveDirection = new Vector2(-verticalMove, horizontalMove);
+        }
+        else
+        {
+            moveDirection = new Vector2(horizontalMove, verticalMove);
+        }
 
-        // Update animator parameters
         animator.SetFloat("Speed", moveDirection.magnitude);
         animator.SetBool("IsGrounded", controller.isGrounded);
 
-        // Control Mabel's animations based on movement
         if (moveDirection.magnitude > 0.01f)
         {
             mabel?.TriggerMoveAnimation();
@@ -61,21 +60,12 @@ public class PlayerMovement : MonoBehaviour
             mabel?.TriggerIdleAnimation();
         }
 
-        // Flip character sprite if direction changes
-        if (horizontalMove > 0 && facingLeft)
-        {
-            Flip();
-        }
-        else if (horizontalMove < 0 && !facingLeft)
-        {
-            Flip();
-        }
+        // Handle flipping based on movement
+        HandleFlipping();
 
-        // Handle jumping
         if (Input.GetButtonDown("Jump") && controller.isGrounded)
         {
             jump = true;
-            Debug.Log("Jumping!");
             animator.SetBool("IsJumping", true);
         }
     }
@@ -83,15 +73,41 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (isDead) return;
-
-        // Pass movement and jump parameters to the controller
         controller.Move(moveDirection.x * Time.fixedDeltaTime, moveDirection.y * Time.fixedDeltaTime, jump);
         jump = false;
     }
 
-    public void OnLanding()
+    public void SetRotationState(bool rotated)
     {
-        animator.SetBool("IsJumping", false);
+        isRotated = rotated;
+    }
+
+    private void HandleFlipping()
+    {
+        if (isRotated)
+        {
+            // In side profile mode, vertical movement (W/S) determines flipping
+            if (moveDirection.y < 0 && facingLeft)  // 'Up' is right in side profile
+            {
+                Flip();
+            }
+            else if (moveDirection.y > 0 && !facingLeft) // 'Down' is left in side profile
+            {
+                Flip();
+            }
+        }
+        else
+        {
+            // Normal mode flipping (A/D movement)
+            if (moveDirection.x > 0 && facingLeft)
+            {
+                Flip();
+            }
+            else if (moveDirection.x < 0 && !facingLeft)
+            {
+                Flip();
+            }
+        }
     }
 
     private void Flip()
@@ -122,11 +138,16 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("IsDead", true);
         Debug.Log("[Player] Player has died.");
 
-        // Disable player movement and interactions
+        // Disable movement and interactions
         controller.enabled = false;
         this.enabled = false;
 
         Debug.Log("Game Over!");
         Application.Quit(); // Quit the game (temporary)
+    }
+
+    public void OnLanding()
+    {
+        animator.SetBool("IsJumping", false);
     }
 }
