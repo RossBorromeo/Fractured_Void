@@ -522,7 +522,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -725,6 +725,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4737591436914757406, guid: f049bfef775a70f49afbee2e4ba2ec99, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 7052323688495891549, guid: f049bfef775a70f49afbee2e4ba2ec99, type: 3}
       propertyPath: fireRate
       value: 0.1
@@ -1117,6 +1121,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 1.183
       objectReference: {fileID: 0}
+    - target: {fileID: 4721158715931778202, guid: 53ddddc42ed7b434d8d9a9cee9d46af8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 6841475483184564308, guid: 53ddddc42ed7b434d8d9a9cee9d46af8, type: 3}
       propertyPath: m_Name
       value: Oliver
@@ -1615,6 +1623,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4737591436914757406, guid: f049bfef775a70f49afbee2e4ba2ec99, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 7052323688495891549, guid: f049bfef775a70f49afbee2e4ba2ec99, type: 3}
       propertyPath: fireRate
       value: 0.1
@@ -1965,6 +1977,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4737591436914757406, guid: f049bfef775a70f49afbee2e4ba2ec99, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 7052323688495891549, guid: f049bfef775a70f49afbee2e4ba2ec99, type: 3}
       propertyPath: fireRate
       value: 0.1
