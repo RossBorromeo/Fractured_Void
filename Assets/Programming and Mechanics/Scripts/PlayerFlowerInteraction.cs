@@ -30,14 +30,14 @@ public class PlayerFlowerInteraction : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, flower.transform.position) <= interactionRadius)
             {
-                if (flower.name == "Rose" && !hasFlower1)
+                if (flower.name == "Tulip" && !hasFlower1)
                 {
                     hasFlower1 = true;
                     Debug.Log("Collected Flower 1");
                     Destroy(flower);
                     return;
                 }
-                else if (flower.name == "Sunflower" && !hasFlower2)
+                else if (flower.name == "Aster" && !hasFlower2)
                 {
                     hasFlower2 = true;
                     Debug.Log("Collected Flower 2");
