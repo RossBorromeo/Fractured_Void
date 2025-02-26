@@ -8510,7 +8510,7 @@ Transform:
   m_GameObject: {fileID: 814101200}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1189193, y: -0.008664535, z: 0.0010377845, w: 0.99286556}
-  m_LocalPosition: {x: -22.202957, y: 6.105305, z: -12.525094}
+  m_LocalPosition: {x: -22.185125, y: 6.105305, z: -12.524783}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11855,6 +11855,7 @@ GameObject:
   - component: {fileID: 1705323218}
   - component: {fileID: 1705323217}
   - component: {fileID: 1705323216}
+  - component: {fileID: 1705323220}
   - component: {fileID: 1705323215}
   m_Layer: 0
   m_Name: KillZone
@@ -11870,7 +11871,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705323214}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 016e12622f7e3354f83a15ad01393702, type: 3}
   m_Name: 
@@ -11963,6 +11964,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1705323220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705323214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f30e30b806a4d64597c7f0c9db96fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1711721408 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1601311968287200, guid: 633cf74b7a917114ab31d983ee913530, type: 3}
@@ -12427,7 +12440,7 @@ Transform:
   m_GameObject: {fileID: 1754436893}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1189193, y: -0.008664535, z: 0.0010377845, w: 0.99286556}
-  m_LocalPosition: {x: -22.202957, y: 6.105305, z: -12.525094}
+  m_LocalPosition: {x: -22.185125, y: 6.105305, z: -12.524783}
   m_LocalScale: {x: -7.85, y: -2.14, z: -0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
