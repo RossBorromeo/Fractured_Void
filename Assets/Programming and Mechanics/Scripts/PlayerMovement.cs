@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private bool jump = false;
     private bool facingLeft = true;
     private bool isRotated = false;
+    private bool canMove = true;
 
     [Header("Health Settings")]
     public Health health;
@@ -32,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (isDead) return;
+        if (isDead || !canMove) return;
 
         float speed = Input.GetKey(KeyCode.LeftShift) ? walkSpeed * runMultiplier : walkSpeed;
         float horizontalMove = Input.GetAxisRaw("Horizontal") * speed; // A/D
@@ -149,5 +151,16 @@ public class PlayerMovement : MonoBehaviour
     public void OnLanding()
     {
         animator.SetBool("IsJumping", false);
+    }
+    public void SetMovementEnabled(bool isEnabled)
+    {
+        canMove = isEnabled;
+
+        if (!isEnabled)
+        {
+            moveDirection = Vector2.zero; // Stop movement instantly
+            controller.Move(0, 0, false); // Ensure no leftover movement
+            animator.SetFloat("Speed", 0); // Stop walk/run animations
+        }
     }
 }

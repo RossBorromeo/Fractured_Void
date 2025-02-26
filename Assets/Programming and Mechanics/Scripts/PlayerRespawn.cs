@@ -31,5 +31,12 @@ public class PlayerRespawn : MonoBehaviour
             Debug.Log("Respawning at last checkpoint...");
             transform.position = lastCheckpoint; // Respawn at last checkpoint
         }
+
+        // Reset all vines in the scene
+        CreepingVines[] vines = FindObjectsByType<CreepingVines>(FindObjectsSortMode.None);
+        foreach (CreepingVines vine in vines)
+        {
+            vine.ResetVines();
+        }
     }
 }
