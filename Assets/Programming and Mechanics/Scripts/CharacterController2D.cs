@@ -10,7 +10,8 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
 
     [Header("Physics Settings")]
-    [SerializeField] private float fallMultiplier = 2.5f;
+    [SerializeField] private float fallMultiplier = 5f; // Increased for faster falling
+    [SerializeField] private float lowJumpMultiplier = 3f; // Makes short jumps more responsive
     [SerializeField] private float groundCheckRadius = 0.1f;
 
     private Rigidbody rb;
@@ -51,9 +52,7 @@ public class CharacterController2D : MonoBehaviour
             capsuleCollider.bounds.min.y - 0.1f, // Lower the check position slightly
             capsuleCollider.bounds.center.z
         );
-        Debug.Log("Character is grounded");
         return Physics.CheckSphere(bottomPoint, groundCheckRadius, whatIsGround);
-        
     }
 
     public void Move(float moveX, float moveZ, bool jump)
@@ -65,6 +64,7 @@ public class CharacterController2D : MonoBehaviour
         // Handle jumping
         if (isGrounded && jump)
         {
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z); // Reset Y velocity before jumping
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false; // Prevent multiple jumps until the player lands
         }
@@ -74,7 +74,13 @@ public class CharacterController2D : MonoBehaviour
     {
         if (rb.velocity.y < 0)
         {
+            // Increase gravity force when falling
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            // If player releases jump button early, apply stronger downward force
+            rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
 
