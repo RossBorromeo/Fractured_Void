@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Nova-Folder/UserInterface/Scenes/Pre_Production/Bedroom_Opening_Scene.unity
     guid: 8734263e593695748adfb4c4d0063e93
   - enabled: 1
+    path: Assets/Nova-Folder/LevelDesign/Scenes/Rose_Garden_Ross_27th.unity
+    guid: 231c81bb7b1e3d14b91c3adb5a7ac75d
+  - enabled: 1
+    path: Assets/Nova-Folder/LevelDesign/Scenes/TurretScene.unity
+    guid: 733a12829d14dd044aaf94bbb07eecd6
+  - enabled: 0
     path: Assets/Nova-Folder/UserInterface/Scenes/Production/Rose_Garden_Latest.unity
     guid: c048f5781e5783c4eabb9760d2f35a7c
   - enabled: 0
@@ -20,8 +26,5 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Nova-Folder/Sound_Design/Scenes/Movement - Rose Garden.unity
     guid: 9f8b1df5b9ee49541bc0a1585a53d06d
-  - enabled: 1
-    path: Assets/Nova-Folder/LevelDesign/Scenes/TurretScene.unity
-    guid: 733a12829d14dd044aaf94bbb07eecd6
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
