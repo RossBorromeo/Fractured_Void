@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Nova-Folder/UserInterface/Scenes/Pre_Production/Bedroom_Opening_Scene.unity
     guid: 8734263e593695748adfb4c4d0063e93
   - enabled: 1
-    path: Assets/Nova-Folder/LevelDesign/Scenes/Rose_Garden_Ross_27th.unity
+    path: Assets/Nova-Folder/LevelDesign/Scenes/Rose_Garden_Ross_1st.unity
     guid: 231c81bb7b1e3d14b91c3adb5a7ac75d
   - enabled: 1
     path: Assets/Nova-Folder/LevelDesign/Scenes/TurretScene.unity
