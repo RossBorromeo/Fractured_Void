@@ -8,17 +8,23 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Nova-Folder/UserInterface/Scenes/Pre_Production/MainMenu.unity
     guid: 2dbbde9752e508a4f8e7c100ea5ac7e5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Nova-Folder/UserInterface/Scenes/Pre_Production/Bedroom_Opening_Scene.unity
     guid: 8734263e593695748adfb4c4d0063e93
   - enabled: 1
-    path: Assets/Nova-Folder/LevelDesign/Scenes/Rose_Garden_Ross_1st.unity
-    guid: 231c81bb7b1e3d14b91c3adb5a7ac75d
+    path: Assets/Nova-Folder/UserInterface/Scenes/Bedroom_Ross_1st.unity
+    guid: a48c76d092102ac4bb7693e97695ff86
+  - enabled: 1
+    path: Assets/Nova-Folder/UserInterface/Scenes/Rose_Garden_Ross_1st.unity
+    guid: ebbc293fde7e72e4a8840ba0911908d2
   - enabled: 1
     path: Assets/Nova-Folder/LevelDesign/Scenes/TurretScene.unity
     guid: 733a12829d14dd044aaf94bbb07eecd6
+  - enabled: 1
+    path: Assets/Nova-Folder/LevelDesign/Scenes/Rose_Garden_Ross_1st.unity
+    guid: 231c81bb7b1e3d14b91c3adb5a7ac75d
   - enabled: 0
-    path: Assets/Nova-Folder/UserInterface/Scenes/Production/Rose_Garden_Latest.unity
+    path: Assets/Nova-Folder/UserInterface/Scenes/Production/Sprint 14/Rose_Garden_Latest.unity
     guid: c048f5781e5783c4eabb9760d2f35a7c
   - enabled: 0
     path: Assets/Nova-Folder/Sound_Design/Scenes/Movement - House.unity
