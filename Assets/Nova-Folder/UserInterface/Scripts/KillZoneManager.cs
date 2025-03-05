@@ -48,7 +48,7 @@ public class KillZoneManager : MonoBehaviour
             }
         */
         /***********          REPLACE SCENE NAME WITH THE MOST CURRENT SCENE NAME AND UPDATE BUILD SETTINGS                               *************/
-        if (SceneManager.GetActiveScene().name == "Bedroom_Scene_Ross_1st")
+        if (SceneManager.GetActiveScene().name == "Bedroom_Elizabeth_5th")
         {
             ResetHearts();
         }
@@ -68,7 +68,7 @@ public class KillZoneManager : MonoBehaviour
                     {
                         PlayerPrefs.SetInt("RemainingHearts", maxHearts); // Reset hearts before loading bedroom
                         PlayerPrefs.Save();
-                        SceneManager.LoadScene("Bedroom_Ross_1st");
+                        SceneManager.LoadScene("Bedroom_Elizabeth_5th");
                         return;
                     }
                 }
