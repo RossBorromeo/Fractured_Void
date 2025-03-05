@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Nova-Folder/UserInterface/Scenes/Pre_Production/Bedroom_Opening_Scene.unity
     guid: 8734263e593695748adfb4c4d0063e93
   - enabled: 1
-    path: Assets/Nova-Folder/UserInterface/Scenes/Bedroom_Ross_1st.unity
+    path: Assets/Nova-Folder/UserInterface/Scenes/Bedroom_Elizabeth_5th.unity
     guid: a48c76d092102ac4bb7693e97695ff86
   - enabled: 1
-    path: Assets/Nova-Folder/UserInterface/Scenes/Rose_Garden_Ross_1st.unity
+    path: Assets/Nova-Folder/UserInterface/Scenes/Rose_Garden_Elizabeth_5th.unity
     guid: ebbc293fde7e72e4a8840ba0911908d2
   - enabled: 1
     path: Assets/Nova-Folder/LevelDesign/Scenes/TurretScene.unity
