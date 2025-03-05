@@ -7,6 +7,7 @@ using Cinemachine;
 public class CamZone : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera virtualCamera = null;
+    private static CinemachineVirtualCamera activeCamera = null;
 
     private void Start()
     {
@@ -16,7 +17,7 @@ public class CamZone : MonoBehaviour
             return;
         }
 
-        virtualCamera.enabled = false;
+        virtualCamera.enabled = false; // Start disabled
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,7 +25,16 @@ public class CamZone : MonoBehaviour
         if (other.CompareTag("Player") && other is SphereCollider)
         {
             Debug.Log("[CamZone] Player entered camera zone!");
+
+            // Disable the previous camera if another is active
+            if (activeCamera != null && activeCamera != virtualCamera)
+            {
+                activeCamera.enabled = false;
+            }
+
+            // Set the new active camera
             virtualCamera.enabled = true;
+            activeCamera = virtualCamera;
         }
     }
 
@@ -33,7 +43,13 @@ public class CamZone : MonoBehaviour
         if (other.CompareTag("Player") && other is SphereCollider)
         {
             Debug.Log("[CamZone] Player exited camera zone!");
-            virtualCamera.enabled = false;
+
+            // Only disable if this was the active camera
+            if (activeCamera == virtualCamera)
+            {
+                virtualCamera.enabled = false;
+                activeCamera = null;
+            }
         }
     }
 
