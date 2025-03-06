@@ -11,20 +11,23 @@ public class JournalManager : MonoBehaviour
     public GameObject ClickedJournalOpen; // the clicked journal UI image
     public GameObject JournalExitButton;
 
+    //public GameObject HouseUI;
+    public HouseManager houseManager; // Reference to HouseManager
     public void OnJournalClick()
     {
-        if (HUDJournal != null)
+
+
+        // Prevent journal from opening if the house is open
+        if (houseManager != null && houseManager.IsHouseOpen())
         {
-            HUDJournal.SetActive(false); // hides the HUDJournal
+            return;
         }
 
-        if (ClickedJournalOpen != null)
-        {
-            ClickedJournalOpen.SetActive(true); // shows the ClickedJournalOpen
-            JournalExitButton.SetActive(true);
-           
-        }
-       
+        HUDJournal.SetActive(false);// hides the HUDJournal button
+        
+        ClickedJournalOpen.SetActive(true);// shows the ClickedJournalOpen
+        JournalExitButton.SetActive(true);
+        Time.timeScale = 0; // Pause the game
     }
 
     public void CloseJournal()
@@ -37,8 +40,16 @@ public class JournalManager : MonoBehaviour
 
         if (HUDJournal != null)
         {
+
+            Time.timeScale =1;
             HUDJournal.SetActive(true); // shows the HUDJournal again
         }
     }
+    // called by the house to check if the Journal is open
+    public bool IsJournalOpen()
+    {
+        return ClickedJournalOpen.activeSelf;
+    }
+
 
 }

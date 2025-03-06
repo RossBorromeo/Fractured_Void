@@ -14,20 +14,43 @@ public class HouseManager : MonoBehaviour
     public GameObject MabelInfoBox; // information panel on Mabel
     public GameObject RoseInfoBox; // information panel on Rose
     private bool roseWindowTrigger = false; // trigger boolean to check if player has reached Rose princess -> then they can trigger window
+
+   
+
+    public JournalManager journalManager; // Reference to JournalManager
+
     public void OnHouseClick()
     {
+        // Prevent house from opening if the journal is open
+        if (journalManager != null && journalManager.IsJournalOpen())
+        {
+            return;
+        }
+
+        HUDHouse.SetActive(false);// hides the HUDHouse button
+        ClickedHouse.SetActive(true);// shows the ClickedHouse
+        HouseExitButton.SetActive(true);
+        MabelWindow.SetActive(true);// shows Mabel's window
+        Time.timeScale = 0; // pauses the game
+
+        if (RoseWindow != null) RoseWindow.SetActive(roseWindowTrigger);
+        /*
+
         if (HUDHouse != null)
         {
-            HUDHouse.SetActive(false); // hides the HUDHouse
+            HUDHouse.SetActive(false); 
         }
 
         if (ClickedHouse != null)
         {
-            ClickedHouse.SetActive(true); // shows the ClickedHouse
+            Time.timeScale = 0;
+
+            ClickedHouse.SetActive(true); 
             HouseExitButton.SetActive(true);
             MabelWindow.SetActive(true);// shows Mabel's window
         }
-        if (RoseWindow != null) RoseWindow.SetActive(roseWindowTrigger);
+        
+        */
     }
 
     public void CloseBigHouse()
@@ -40,6 +63,7 @@ public class HouseManager : MonoBehaviour
 
         if (HUDHouse != null)
         {
+            Time.timeScale = 1;
             HUDHouse.SetActive(true); // shows the HUD house again
         }
     }
@@ -48,8 +72,11 @@ public class HouseManager : MonoBehaviour
     {
         roseWindowTrigger = true; // marks that the player reached the rose trigger
     }
+    // this will be called to check if the the House is open
+    public bool IsHouseOpen()
+    {
+        return ClickedHouse.activeSelf;
+    }
 
-
-    
 
 }

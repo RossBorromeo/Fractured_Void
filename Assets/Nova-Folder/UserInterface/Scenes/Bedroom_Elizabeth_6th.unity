@@ -13394,7 +13394,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 1, g: 0.98805016, b: 0.5896226, a: 1}
+    m_PressedColor: {r: 1, g: 0.96085787, b: 0.48584908, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -15048,7 +15048,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 1, g: 0.9647059, b: 0.4862745, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -15176,6 +15176,7 @@ MonoBehaviour:
   RoseWindow: {fileID: 179397840}
   MabelInfoBox: {fileID: 1851897762}
   RoseInfoBox: {fileID: 1966030087}
+  journalManager: {fileID: 1798084795}
 --- !u!114 &1798084795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15191,6 +15192,7 @@ MonoBehaviour:
   HUDJournal: {fileID: 1499682588}
   ClickedJournalOpen: {fileID: 600856270}
   JournalExitButton: {fileID: 560265710}
+  houseManager: {fileID: 1798084794}
 --- !u!4 &1822545158 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4566036985316948163, guid: f1f08eec58d1435498ebed8023f42d7c, type: 3}
