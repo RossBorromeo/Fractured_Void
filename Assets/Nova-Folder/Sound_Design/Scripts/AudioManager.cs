@@ -8,7 +8,8 @@ public enum SoundType
 {
     Jump,
     Attack,
-    Footsteps
+    Footsteps,
+    SFX
 }
 
 [RequireComponent(typeof(AudioSource))]

@@ -6,6 +6,7 @@ public class KeyManager : MonoBehaviour
     public float pickupRange = 2f;
     private bool isNearPlayer = false;
 
+
     void Update()
     {
         if (isNearPlayer && Input.GetKeyDown(KeyCode.E))
@@ -18,6 +19,9 @@ public class KeyManager : MonoBehaviour
     {
         Debug.Log($"Key {keyID} picked up!");
         PlayerInventory.Instance.AddKey(keyID); // Add key to player's inventory
+
+      
+
         gameObject.SetActive(false); // Hide the key
     }
 
