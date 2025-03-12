@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OrangePortal
+  m_Name: Autumn Portal
   m_Shader: {fileID: -6465566751694194690, guid: b4b25a9108fe4db4aa8e59b72169f460, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -50,7 +50,7 @@ Material:
     - _Speed: 0.2
     - _Strength: 25
     m_Colors:
-    - _Color: {r: 174.717, g: 49.215984, b: 15.658593, a: 0}
+    - _Color: {r: 59.333717, g: 5.3896637, b: 228.52177, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &2110545713350921159

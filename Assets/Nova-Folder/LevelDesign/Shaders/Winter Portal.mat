@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DarkBluePortal
+  m_Name: Winter Portal
   m_Shader: {fileID: -6465566751694194690, guid: b4b25a9108fe4db4aa8e59b72169f460, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -50,7 +50,7 @@ Material:
     - _Speed: 0.2
     - _Strength: 25
     m_Colors:
-    - _Color: {r: 2.5109487, g: 5.5878453, b: 59.14682, a: 0}
+    - _Color: {r: 137.75911, g: 3.249035, b: 3.249035, a: 0.85882354}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &2110545713350921159

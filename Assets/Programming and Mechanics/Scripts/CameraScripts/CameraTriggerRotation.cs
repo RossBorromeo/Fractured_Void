@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraTriggerRotation : MonoBehaviour
 {
     [SerializeField] private Transform playerTransform;
-    [SerializeField] private float rotationDelay = 0.5f; // Small delay for better transitions
-    private static int sideProfileZoneCount = 0; // Track how many zones player is in
+    [SerializeField] private float rotationDelay = 0.5f;
+    private static int rotationZoneCount = 0;
 
     private PlayerMovement playerMovement;
 
@@ -23,9 +23,9 @@ public class CameraTriggerRotation : MonoBehaviour
     {
         if (other.CompareTag("Player") && other is SphereCollider)
         {
-            sideProfileZoneCount++; // Increase count when entering a zone
+            rotationZoneCount++; // Track overlapping rotation zones
 
-            if (sideProfileZoneCount == 1) // Only rotate on first entry
+            if (rotationZoneCount == 1) // Only rotate on first zone entry
             {
                 Debug.Log("[CameraTriggerRotation] Switching to Side Profile View!");
                 StartCoroutine(RotateWithDelay(new Vector3(0, 90, 0), true));
@@ -37,9 +37,9 @@ public class CameraTriggerRotation : MonoBehaviour
     {
         if (other.CompareTag("Player") && other is SphereCollider)
         {
-            sideProfileZoneCount--; // Decrease count when leaving a zone
+            rotationZoneCount--; // Decrease count when leaving a zone
 
-            if (sideProfileZoneCount == 0) // Only reset rotation if no zones remain
+            if (rotationZoneCount == 0) // Only reset rotation if no zones remain
             {
                 Debug.Log("[CameraTriggerRotation] Returning to Normal View!");
                 StartCoroutine(RotateWithDelay(new Vector3(0, 0, 0), false));
@@ -57,29 +57,36 @@ public class CameraTriggerRotation : MonoBehaviour
 
         if (playerMovement != null)
         {
-            playerMovement.SetMovementEnabled(false); // Temporarily disable movement
+            playerMovement.SetMovementEnabled(false);
         }
 
-        yield return new WaitForSeconds(rotationDelay); // Small delay for smooth transition
+        yield return new WaitForSeconds(rotationDelay);
 
         playerTransform.rotation = Quaternion.Euler(rotation);
 
         if (playerMovement != null)
         {
-            playerMovement.SetMovementEnabled(true); // Re-enable movement
+            playerMovement.SetMovementEnabled(true);
             playerMovement.SetRotationState(rotated);
         }
     }
 
-    // **PUBLIC STATIC METHOD TO FORCE SIDE PROFILE AFTER TELEPORT**
-    public static void ForceSideProfile(Transform playerTransform)
-    {
-        playerTransform.rotation = Quaternion.Euler(0, 90, 0);
-    }
-
-    // **Public method to check if side profile is active (for portals)**
     public static bool IsSideProfileActive()
     {
-        return sideProfileZoneCount > 0;
+        return rotationZoneCount > 0;
+    }
+
+    public static void ForceSideProfile(Transform playerTransform)
+    {
+        if (playerTransform == null) return;
+
+        playerTransform.rotation = Quaternion.Euler(0, 90, 0); // Apply side profile rotation
+
+        // Ensure movement restrictions are also applied
+        PlayerMovement playerMovement = playerTransform.GetComponent<PlayerMovement>();
+        if (playerMovement != null)
+        {
+            playerMovement.SetRotationState(true);
+        }
     }
 }

@@ -7,7 +7,7 @@ public class PortalTeleport : MonoBehaviour
     [Tooltip("Assign the destination portal Transform here.")]
     [SerializeField] private Transform destinationPortal;
 
-    private static Vector3 teleportOffset = new Vector3(1, 1, 2); // Universal offset for all portals
+    private static Vector3 teleportOffset = new Vector3(0, 1, 5); // Universal offset for all portals
     private static CinemachineVirtualCamera cinemachineCam;
 
     private Collider portalCollider;
@@ -61,10 +61,8 @@ public class PortalTeleport : MonoBehaviour
                 // **ENSURE CAMERA & ROTATION STATE PERSIST AFTER TELEPORT**
                 StartCoroutine(ReenableColliders(portalCollider, destinationCollider));
 
-                if (wasSideProfile)
-                {
-                    CameraTriggerRotation.ForceSideProfile(other.transform); // Reapply side profile rotation
-                }
+                // **IF PLAYER WAS IN A SIDE-PROFILE ZONE, REAPPLY IT AFTER TELEPORTING**
+                StartCoroutine(ApplySideProfileAfterTeleport(other.transform, wasSideProfile));
             }
             else
             {
@@ -78,5 +76,16 @@ public class PortalTeleport : MonoBehaviour
         yield return new WaitForSeconds(4.0f); // Small delay to allow the player to move away
         if (portalCol != null) portalCol.enabled = true;
         if (destinationCol != null) destinationCol.enabled = true;
+    }
+
+    private IEnumerator ApplySideProfileAfterTeleport(Transform playerTransform, bool wasSideProfile)
+    {
+        yield return new WaitForSeconds(0.1f); // Allow teleportation to fully process
+
+        if (wasSideProfile)
+        {
+            CameraTriggerRotation.ForceSideProfile(playerTransform);
+            Debug.Log("[PortalTeleport] Player was in Side Profile mode before teleporting. Reapplying...");
+        }
     }
 }

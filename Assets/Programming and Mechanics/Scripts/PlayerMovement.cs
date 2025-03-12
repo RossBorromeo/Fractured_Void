@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private bool facingLeft = true;
     private bool isRotated = false;
     private bool canMove = true;
+    private bool isVerticalInverted = false;
+    private bool isHorizontalInverted = false; // NEW: Track horizontal inversion
 
     [Header("Health Settings")]
     public Health health;
@@ -40,13 +42,24 @@ public class PlayerMovement : MonoBehaviour
         float horizontalMove = Input.GetAxisRaw("Horizontal") * speed; // A/D
         float verticalMove = Input.GetAxisRaw("Vertical") * speed;     // W/S
 
+        // **Invert Movement if Required**
+        if (isVerticalInverted)
+        {
+            verticalMove *= -1;
+        }
+        if (isHorizontalInverted)
+        {
+            horizontalMove *= -1;
+        }
+
         if (isRotated)
         {
-            // Reverse W/S movement in side profile mode
+            // **Side Profile Mode**
             moveDirection = new Vector2(-verticalMove, horizontalMove);
         }
         else
         {
+            // **Normal Mode**
             moveDirection = new Vector2(horizontalMove, verticalMove);
         }
 
@@ -88,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isRotated)
         {
-            // In side profile mode, vertical movement (W/S) determines flipping
+            // **Side Profile Mode Flipping**
             if (moveDirection.y < 0 && facingLeft)  // 'Up' is right in side profile
             {
                 Flip();
@@ -100,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            // Normal mode flipping (A/D movement)
+            // **Normal Mode Flipping**
             if (moveDirection.x > 0 && facingLeft)
             {
                 Flip();
@@ -152,6 +165,7 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetBool("IsJumping", false);
     }
+
     public void SetMovementEnabled(bool isEnabled)
     {
         canMove = isEnabled;
@@ -162,5 +176,12 @@ public class PlayerMovement : MonoBehaviour
             controller.Move(0, 0, false); // Ensure no leftover movement
             animator.SetFloat("Speed", 0); // Stop walk/run animations
         }
+    }
+
+    // **Enable/Disable Vertical and Horizontal Inversion**
+    public void SetInvertedControls(bool state)
+    {
+        isVerticalInverted = state;
+        isHorizontalInverted = state;
     }
 }
