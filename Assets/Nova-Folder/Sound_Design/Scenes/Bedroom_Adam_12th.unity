@@ -11674,6 +11674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4899e75e22e8bb41ad5984b3609e1e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KeyCollectedSFX: {fileID: 8300000, guid: 174f087bf29146f41b412ed34cc62f2d, type: 3}
 --- !u!114 &1723793674 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8972956853135005985, guid: 53ddddc42ed7b434d8d9a9cee9d46af8, type: 3}
