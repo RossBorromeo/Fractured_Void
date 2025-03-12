@@ -68,7 +68,7 @@ public class DialogueTrigger : MonoBehaviour
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "That’s Rose, she controls this garden now.  " });
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "You remember her?" });
                 dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "No... I dont think so... " });
-                dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "She has some of your memories too, if anyone knows what happened here its her. " });
+                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "She has some of your memories too, if anyone knows what happened here its her. " });
 
 
             }
