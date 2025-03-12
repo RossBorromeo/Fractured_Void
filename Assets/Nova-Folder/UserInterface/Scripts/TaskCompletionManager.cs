@@ -42,7 +42,7 @@ public class TaskCompletionManager : MonoBehaviour
 
         if (!doorOpened && doorAnimator != null)
         {
-            // Check if the current animation state is "BedDoorOpening"
+            // check if the current animation state is "BedDoorOpening"
             AnimatorStateInfo stateInfo = doorAnimator.GetCurrentAnimatorStateInfo(0);
             if (stateInfo.IsName("BedDoorOpening") && stateInfo.normalizedTime >= 0.5f)
             {

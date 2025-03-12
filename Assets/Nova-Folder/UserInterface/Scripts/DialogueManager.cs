@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEditor.Rendering;
 
 public class DialogueManager : MonoBehaviour
 {
-    public static DialogueManager Instance; // singleton
+    
 
     public TextMeshProUGUI oliverDialogueText; // Oliver's TextBox
     public TextMeshProUGUI mabelDialogueText; // Mabel's TextBox
@@ -14,10 +15,14 @@ public class DialogueManager : MonoBehaviour
     public GameObject oliverDialogueBox; // Oliver's UI DialogueBox
     public GameObject mabelDialogueBox; // Mabel's UI DialogueBox
 
-    private Queue<string> dialogueQueue = new Queue<string>(); // Stores dialogue lines
-    private string currentSpeaker = "";
+    public GameObject oliverBust; // Oliver's UI Bust 
+    public GameObject mabelBust; // Mabel's UI Bust 
 
-    void Awake()
+    private Queue<DialogueLine> dialogueQueue = new Queue<DialogueLine>();// Stores dialogue lines
+    private bool isDialogueActive = false;// Track if dialogue is running
+
+    public static DialogueManager Instance; // singleton
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -29,34 +34,24 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(string[] lines, string speaker)
+    public void StartDialogue(List<DialogueLine> lines)
     {
         dialogueQueue.Clear();
 
-        foreach (string line in lines)
+        foreach (DialogueLine line in lines)
         {
             dialogueQueue.Enqueue(line);
         }
 
-        currentSpeaker = speaker;
-        ShowCorrectDialogueBox();
+        isDialogueActive = true;
         DisplayNextLine();
     }
 
-    private void ShowCorrectDialogueBox()
+    void Update()
     {
-        // hide both dialogue boxes first
-        oliverDialogueBox.SetActive(false);
-        mabelDialogueBox.SetActive(false);
-
-        // show the correct dialogue box based on the character
-        if (currentSpeaker == "Oliver")
+        if (isDialogueActive && (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown(KeyCode.Mouse0)))
         {
-            oliverDialogueBox.SetActive(true);
-        }
-        else if (currentSpeaker == "Mabel")
-        {
-            mabelDialogueBox.SetActive(true);
+            DisplayNextLine();
         }
     }
 
@@ -68,29 +63,36 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        string line = dialogueQueue.Dequeue();
+        DialogueLine currentLine = dialogueQueue.Dequeue();
+        //Debug.Log("Displaying line: " + currentLine.speakerName + " - " + currentLine.text);
+        //hides all Dialogue elements at first 
+        mabelDialogueBox.SetActive(false);
+        oliverDialogueBox.SetActive(false);
+        oliverBust.SetActive(false);
+        mabelBust.SetActive(false);
 
-        if (currentSpeaker == "Oliver")
+        //shows all the correct character's dialogue box and busts
+        if (currentLine.speakerName == "Oliver")
         {
-            oliverDialogueText.text = line;
+            oliverDialogueBox.SetActive(true);  // show Oliver's dialogue UI, including text
+            oliverBust.SetActive(true);
+            oliverDialogueText.text = currentLine.text;
         }
-        else if (currentSpeaker == "Mabel")
+        else if (currentLine.speakerName == "Mabel")
         {
-            mabelDialogueText.text = line;
-        }
+            mabelDialogueBox.SetActive(true);
+            mabelBust.SetActive(true);
+            mabelDialogueText.text = currentLine.text;
+        }  
+
     }
 
     public void EndDialogue()
     {
-        oliverDialogueBox.SetActive(false);
         mabelDialogueBox.SetActive(false);
-    }
-
-    void Update()
-    {
-        if ((oliverDialogueBox.activeSelf || mabelDialogueBox.activeSelf) && Input.GetKeyDown(KeyCode.Return))
-        {
-            DisplayNextLine();
-        }
+        oliverDialogueBox.SetActive(false);
+        mabelBust.SetActive(false);
+        oliverBust.SetActive(false);
+        isDialogueActive = false;
     }
 }
