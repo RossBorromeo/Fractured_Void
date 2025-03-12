@@ -20,7 +20,7 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<DialogueLine> dialogueQueue = new Queue<DialogueLine>();// Stores dialogue lines
     private bool isDialogueActive = false;// Track if dialogue is running
-
+    private System.Action onDialogueEndCallback;// stores the callback for the pause 
     public static DialogueManager Instance; // singleton
     private void Awake()
     {
@@ -34,8 +34,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(List<DialogueLine> lines)
+    public void StartDialogue(List<DialogueLine> lines, System.Action onDialogueEnd=null)
     {
+        onDialogueEndCallback = onDialogueEnd;// stores the callback
         dialogueQueue.Clear();
 
         foreach (DialogueLine line in lines)
@@ -94,5 +95,11 @@ public class DialogueManager : MonoBehaviour
         mabelBust.SetActive(false);
         oliverBust.SetActive(false);
         isDialogueActive = false;
+
+        if (onDialogueEndCallback != null)
+        {
+            onDialogueEndCallback?.Invoke();// calls the function to resume the game 
+        }
+
     }
 }

@@ -125,12 +125,13 @@ public class DialogueTrigger : MonoBehaviour
     {
        //Debug.Log("Starting dialogue in " + delay + " seconds...");
         yield return new WaitForSeconds(delay);
-
+         // pauses the game
+       
         if (!hasTriggered)
         {
-            
+            Time.timeScale = 0f;
             Debug.Log("Starting dialogue for area: " + areaName);
-            DialogueManager.Instance.StartDialogue(dialogueLines);
+            DialogueManager.Instance.StartDialogue(dialogueLines, ResumeGame);// function that resumes game after dialogue
             hasTriggered = true;
         }
         else
@@ -138,8 +139,11 @@ public class DialogueTrigger : MonoBehaviour
             Debug.Log("Dialogue already triggered, skipping...");
         }
     }
+    private void ResumeGame()
+    {
+        Time.timeScale = 1f; // resumes the game
+    }
 
-  
 }
 
 
