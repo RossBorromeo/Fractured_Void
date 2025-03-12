@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: YellowPortal
+  m_Name: Spring Portal
   m_Shader: {fileID: -6465566751694194690, guid: b4b25a9108fe4db4aa8e59b72169f460, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -50,7 +50,7 @@ Material:
     - _Speed: 0.2
     - _Strength: 25
     m_Colors:
-    - _Color: {r: 213.45567, g: 156.10796, b: 9.061793, a: 0}
+    - _Color: {r: 127.15004, g: 13.314142, b: 97.19324, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &2110545713350921159

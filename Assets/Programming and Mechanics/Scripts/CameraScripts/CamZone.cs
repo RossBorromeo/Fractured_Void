@@ -7,7 +7,8 @@ using Cinemachine;
 public class CamZone : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera virtualCamera = null;
-    private static CinemachineVirtualCamera activeCamera = null;
+    private static List<CinemachineVirtualCamera> activeCameras = new List<CinemachineVirtualCamera>();
+    private static CinemachineVirtualCamera defaultCamera; // Reference to Vcam Main
 
     private void Start()
     {
@@ -18,6 +19,21 @@ public class CamZone : MonoBehaviour
         }
 
         virtualCamera.enabled = false; // Start disabled
+
+        // Find Vcam Main if not assigned
+        if (defaultCamera == null)
+        {
+            GameObject vcamObject = GameObject.Find("Vcam Main");
+            if (vcamObject != null)
+            {
+                defaultCamera = vcamObject.GetComponent<CinemachineVirtualCamera>();
+            }
+
+            if (defaultCamera == null)
+            {
+                Debug.LogError("Cinemachine Virtual Camera 'Vcam Main' not found in the scene!");
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,15 +42,17 @@ public class CamZone : MonoBehaviour
         {
             Debug.Log("[CamZone] Player entered camera zone!");
 
-            // Disable the previous camera if another is active
-            if (activeCamera != null && activeCamera != virtualCamera)
+            if (!activeCameras.Contains(virtualCamera))
             {
-                activeCamera.enabled = false;
+                activeCameras.Add(virtualCamera);
+                virtualCamera.enabled = true;
             }
 
-            // Set the new active camera
-            virtualCamera.enabled = true;
-            activeCamera = virtualCamera;
+            // Disable the default camera while in a zone
+            if (defaultCamera != null)
+            {
+                defaultCamera.enabled = false;
+            }
         }
     }
 
@@ -44,11 +62,17 @@ public class CamZone : MonoBehaviour
         {
             Debug.Log("[CamZone] Player exited camera zone!");
 
-            // Only disable if this was the active camera
-            if (activeCamera == virtualCamera)
+            if (activeCameras.Contains(virtualCamera))
             {
+                activeCameras.Remove(virtualCamera);
                 virtualCamera.enabled = false;
-                activeCamera = null;
+            }
+
+            // If no more active cameras, switch back to default
+            if (activeCameras.Count == 0 && defaultCamera != null)
+            {
+                Debug.Log("[CamZone] No active cameras left, switching back to Vcam Main.");
+                defaultCamera.enabled = true;
             }
         }
     }
