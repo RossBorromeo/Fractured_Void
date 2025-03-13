@@ -7,10 +7,14 @@ public class DoorManager : MonoBehaviour
     private Animator animator;
     private Collider solidCollider; // Reference to the blocking collider
 
+    public AudioClip doorOpenSound; //Adam
+    private AudioSource audioSource; //Adam
     void Start()
     {
         animator = GetComponent<Animator>();
         solidCollider = GetComponent<BoxCollider>(); // Get the blocking collider
+
+        audioSource = GetComponent<AudioSource>(); //Adam
     }
 
     void Update()
@@ -27,6 +31,12 @@ public class DoorManager : MonoBehaviour
         {
             Debug.Log($"Door {requiredKeyID} opening...");
             animator.SetTrigger("DoorOpen");
+
+            // Play the door opening sound
+            if (doorOpenSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(doorOpenSound);
+            }
 
             // Disable the solid collider so the player can pass
             if (solidCollider != null)
