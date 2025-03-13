@@ -11,11 +11,17 @@ public class JournalManager : MonoBehaviour
     public GameObject ClickedJournalOpen; // the clicked journal UI image
     public GameObject JournalExitButton;
 
+    public AudioSource audioSource; // Adam
+    public AudioClip journalClickSound; // Adam
+
     //public GameObject HouseUI;
     public HouseManager houseManager; // Reference to HouseManager
     public void OnJournalClick()
     {
-
+        if (audioSource != null && journalClickSound != null)
+        {
+            audioSource.PlayOneShot(journalClickSound);
+        }
 
         // Prevent journal from opening if the house is open
         if (houseManager != null && houseManager.IsHouseOpen())
@@ -34,6 +40,12 @@ public class JournalManager : MonoBehaviour
     {
         if (ClickedJournalOpen != null)
         {
+
+            if (audioSource != null && journalClickSound != null)
+            {
+                audioSource.PlayOneShot(journalClickSound);
+            }
+
             ClickedJournalOpen.SetActive(false); // hides the ClickedJournalOpen
             JournalExitButton.SetActive(false);
         }

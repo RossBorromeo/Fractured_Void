@@ -15,16 +15,24 @@ public class HouseManager : MonoBehaviour
     public GameObject RoseInfoBox; // information panel on Rose
     private bool roseWindowTrigger = false; // trigger boolean to check if player has reached Rose princess -> then they can trigger window
 
-   
+
 
     public JournalManager journalManager; // Reference to JournalManager
 
+
+    public AudioSource audioSource; //Adam
+    public AudioClip clickSound;    //Adam
     public void OnHouseClick()
     {
         // Prevent house from opening if the journal is open
         if (journalManager != null && journalManager.IsJournalOpen())
         {
             return;
+        }
+
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);
         }
 
         HUDHouse.SetActive(false);// hides the HUDHouse button
@@ -55,6 +63,11 @@ public class HouseManager : MonoBehaviour
 
     public void CloseBigHouse()
     {
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
+
         if (ClickedHouse != null)
         {
             ClickedHouse.SetActive(false); // hides the ClickedHouse
