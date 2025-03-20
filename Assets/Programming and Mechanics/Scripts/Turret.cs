@@ -6,7 +6,6 @@ public class Turret : MonoBehaviour
     [Header("Turret Settings")]
     [SerializeField] private float detectionRadius = 10f;
     [SerializeField] private float fireRate = 1f;
-    [SerializeField] private float damage = 10f;
     [SerializeField] private float attackAngle = 45f; // Defines the cone angle for detection
 
     [Header("References")]
@@ -17,17 +16,12 @@ public class Turret : MonoBehaviour
     [SerializeField] private Health turretHealth; // Use Health component for turret
 
     private Transform player;
-    private Health playerHealth;
     private Animator animator;
     private bool canShoot = true;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
-        if (player != null)
-        {
-            playerHealth = player.GetComponent<Health>();
-        }
         animator = GetComponent<Animator>();
 
         if (animator != null)
@@ -63,12 +57,6 @@ public class Turret : MonoBehaviour
         }
     }
 
-    private void Die()
-    {
-        Debug.Log("Turret destroyed");
-        Destroy(gameObject);
-    }
-
     private IEnumerator Shoot()
     {
         canShoot = false;
@@ -83,9 +71,8 @@ public class Turret : MonoBehaviour
         if (projectilePrefab != null && firePoint != null && projectileStorage != null && attackTarget != null)
         {
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity, projectileStorage);
-            projectile.GetComponent<Projectile>().Initialize(damage, (attackTarget.position - firePoint.position).normalized);
-            projectile.GetComponent<Projectile>().SetTargetTag("Player"); // Ensure projectile only hits the player
-
+            projectile.GetComponent<Projectile>().Initialize((attackTarget.position - firePoint.position).normalized);
+            projectile.GetComponent<Projectile>().SetTargetTag("Player"); // Ensure projectile only affects the player
         }
 
         yield return new WaitForSeconds(fireRate);

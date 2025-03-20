@@ -4,13 +4,12 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed = 20f;
     [SerializeField] private float lifetime = 3f;
-    private float damage;
+    [SerializeField] private float knockbackForce = 5f; // Amount of force applied to the player
     private Vector3 direction;
-    private string targetTag;    
+    private string targetTag;
 
-    public void Initialize(float damageAmount, Vector3 shootDirection)
+    public void Initialize(Vector3 shootDirection)
     {
-        damage = damageAmount;
         direction = shootDirection.normalized;
         Destroy(gameObject, lifetime);
     }
@@ -27,12 +26,16 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Health targetHealth = other.GetComponent<Health>();
-        if (targetHealth != null)
+        if (other.CompareTag(targetTag))
         {
-            targetHealth.Damage(damage);
-            Debug.Log($"[Projectile] Hit {other.name}. Dealt {damage} damage.");
-            Destroy(gameObject); // Destroy projectile on impact with the player
+            Rigidbody targetRb = other.GetComponent<Rigidbody>();
+            if (targetRb != null)
+            {
+                Vector3 knockbackDirection = direction; // Apply force in the projectile's direction
+                targetRb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
+                Debug.Log($"[Projectile] Hit {other.name}. Applied knockback force.");
+            }
+            Destroy(gameObject); // Destroy projectile on impact
         }
     }
 }
