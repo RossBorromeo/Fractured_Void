@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerRespawn : MonoBehaviour
 {
@@ -8,8 +7,8 @@ public class PlayerRespawn : MonoBehaviour
 
     private void Start()
     {
-        originalSpawn = transform.position; // Store the original spawn position
-        lastCheckpoint = originalSpawn; // Default checkpoint is the original spawn
+        originalSpawn = transform.position;
+        lastCheckpoint = originalSpawn;
     }
 
     public void SetCheckpoint(Vector3 checkpointPosition)
@@ -20,23 +19,27 @@ public class PlayerRespawn : MonoBehaviour
 
     public void Respawn(bool resetToOriginal = false)
     {
+        transform.position = resetToOriginal ? originalSpawn : lastCheckpoint;
+
         if (resetToOriginal)
         {
+            lastCheckpoint = originalSpawn;
             Debug.Log("Respawning at original spawn point...");
-            transform.position = originalSpawn; // Reset to the original spawn point
-            lastCheckpoint = originalSpawn; // Reset checkpoint as well
         }
         else
         {
             Debug.Log("Respawning at last checkpoint...");
-            transform.position = lastCheckpoint; // Respawn at last checkpoint
         }
 
-        // Reset all vines in the scene
         CreepingVines[] vines = FindObjectsByType<CreepingVines>(FindObjectsSortMode.None);
         foreach (CreepingVines vine in vines)
         {
             vine.ResetVines();
         }
+    }
+
+    public bool HasCheckpoint()
+    {
+        return lastCheckpoint != originalSpawn;
     }
 }
