@@ -100,9 +100,16 @@ public class DialogueTrigger : MonoBehaviour
             {
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "Is it just me or is this walkway getting longer?" });
             }
-            else if (areaName == "Puzzle2.2")
+            else if (areaName == "Puzzle2.1.1")
             {
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "Oh perfect! A portal straight back. What could possibly go wrong" });
+                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "Maybe the portals follow a pattern, like the seasons..." });
+                dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "But the seasons dont have assigned colours!" });
+                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "No... But the flowers OF the seasons do." });
+                dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "So the Tulip is pink" });
+                dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "And we have just found a Marigold the Summer flower" });
+                dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "So all I have to do is figure out which one is Autumn and Winter..." });
+                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "And follow that exact order!" });
             }
             else if (areaName == "Puzzle2.3")
             {
@@ -111,11 +118,19 @@ public class DialogueTrigger : MonoBehaviour
             else if (areaName == "Puzzle3")
             {
 
-                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "" });
+                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "Oh no I'm gonna be sick..." });
+                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "So dizzyyy! Watch your step Oliver" });
+
+            }
+
+            else if (areaName == "RoseReveal")
+            {
+
+                dialogueLines.Add(new DialogueLine { speakerName = "Rose", text = "" });
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "" });
 
             }
-           
+
             StartCoroutine(StartDialogueAfterDelay(1f));
 
         }
