@@ -1,36 +1,54 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class TaskCompletionManager : MonoBehaviour
 {
+    public static TaskCompletionManager Instance; // Singleton instance
+
     // TextBoxes for the bedroom level
-    // for assigning the ui text boxes with the bedroom task prompts 
+    // for assigning the UI text boxes with the bedroom task prompts 
     public TMP_Text keyTaskText;
     public TMP_Text doorTaskText;
 
+    // TextBoxes for the garden level
+    public TMP_Text findRoseTaskText;
+    public TMP_Text findFlowersTaskText;
+    public TMP_Text placeFlowersTaskText;
 
-    // TextBoxes for garden level
+    // bedroom variables
+    public string keyID = "KeyOne";  // Unique ID for the key
+    public Animator doorAnimator;    // Assign the Animator of the door
+    private bool keyCollected = false; // Tracks if the key has been collected
+    private bool doorOpened = false;  // Tracks if the door has been opened
 
+    // garden variables
+    public bool flowersCollected = false;  // Tracks if all flowers have been collected
+    public bool flowersPlaced = false;     // Tracks if flowers have been placed correctly
+    public bool roseFound = false;         // Tracks if Rose has been found
 
-
-
-    public string keyID = "KeyOne";
-    public Animator doorAnimator;       // assign the Animator of the door
-    private bool keyCollected = false;
-    private bool doorOpened = false;
+    private void Awake()
+    {
+        // Singleton //  ensures only one instance exists
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
         if (doorAnimator == null)
         {
-            Debug.LogError("Door Animator is not assigned in TaskCompletionManager!");
+            //Debug.LogError("Door Animator is not assigned in TaskCompletionManager!");
         }
     }
+
     void Update()
     {
         // checking if the key has been collected
@@ -40,6 +58,7 @@ public class TaskCompletionManager : MonoBehaviour
             UpdateTaskText(keyTaskText, "Find the key");
         }
 
+        // checking if the door has been opened
         if (!doorOpened && doorAnimator != null)
         {
             // check if the current animation state is "BedDoorOpening"
@@ -48,20 +67,31 @@ public class TaskCompletionManager : MonoBehaviour
             {
                 Debug.Log("Current Animation State: " + doorAnimator.GetCurrentAnimatorStateInfo(0).IsName("BedDoorOpening"));
                 doorOpened = true;
-                UpdateTaskText(doorTaskText, "open the DOOr");
+                UpdateTaskText(doorTaskText, "Open the door");
             }
         }
-        
-        // checking if the door is opened (collider is disabled)
-        // GameObject door = GameObject.Find(doorID);
-        //if (!doorOpened && door != null && !door.GetComponent<Collider>().enabled)
-        // {
-        //     doorOpened = true;
-        //      UpdateTaskText(doorTaskText, "open Door");
-        //  }
 
+        // checking if flowers have been collected
+        if (flowersCollected == true)
+        {
+            UpdateTaskText(findFlowersTaskText, "Collect All Seasonal flowers");
+        }
+
+        // checking if flowers have been placed
+        if (flowersPlaced == true)
+        {
+            UpdateTaskText(placeFlowersTaskText, "Put flowers in the right place");
+        }
+
+        // checking if Rose has been found
+        if (roseFound == true)
+        {
+            UpdateTaskText(findRoseTaskText, "Find Rose");
+        }
     }
-    private void UpdateTaskText(TMP_Text taskText, string taskName)
+
+    // Function to update and cross out completed tasks in the UI
+    public void UpdateTaskText(TMP_Text taskText, string taskName)
     {
         if (taskText != null)
         {

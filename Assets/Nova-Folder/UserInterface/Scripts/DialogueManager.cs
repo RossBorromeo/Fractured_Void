@@ -21,6 +21,9 @@ public class DialogueManager : MonoBehaviour
     private Queue<DialogueLine> dialogueQueue = new Queue<DialogueLine>();// Stores dialogue lines
     private bool isDialogueActive = false;// Track if dialogue is running
     private System.Action onDialogueEndCallback;// stores the callback for the pause 
+
+    private PlayerMovement playerMovement; // reference to player movement script
+
     public static DialogueManager Instance; // singleton
     private void Awake()
     {
@@ -32,10 +35,19 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // finds player and gets the PlayerMovement script
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerMovement = player.GetComponent<PlayerMovement>();
+        }
+
     }
 
     public void StartDialogue(List<DialogueLine> lines, System.Action onDialogueEnd=null)
     {
+
         onDialogueEndCallback = onDialogueEnd;// stores the callback
         dialogueQueue.Clear();
 
@@ -45,6 +57,8 @@ public class DialogueManager : MonoBehaviour
         }
 
         isDialogueActive = true;
+        PausePlayerMovement(); // Pause movement when dialogue starts
+
         DisplayNextLine();
     }
 
@@ -65,7 +79,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         DialogueLine currentLine = dialogueQueue.Dequeue();
-        //Debug.Log("Displaying line: " + currentLine.speakerName + " - " + currentLine.text);
+        
         //hides all Dialogue elements at first 
         mabelDialogueBox.SetActive(false);
         oliverDialogueBox.SetActive(false);
@@ -84,7 +98,9 @@ public class DialogueManager : MonoBehaviour
             mabelDialogueBox.SetActive(true);
             mabelBust.SetActive(true);
             mabelDialogueText.text = currentLine.text;
-        }  
+        }
+        
+
 
     }
 
@@ -96,10 +112,30 @@ public class DialogueManager : MonoBehaviour
         oliverBust.SetActive(false);
         isDialogueActive = false;
 
+        ResumePlayerMovement(); // resumes movement when dialogue ends
+
         if (onDialogueEndCallback != null)
-        {
+        {  
             onDialogueEndCallback?.Invoke();// calls the function to resume the game 
         }
 
     }
+
+    private void PausePlayerMovement()
+    {
+        if (playerMovement != null)
+        {
+            playerMovement.SetMovementEnabled(false); // freezes player
+        }
+    }
+
+    private void ResumePlayerMovement()
+    {
+        if (playerMovement != null)
+        {
+            playerMovement.SetMovementEnabled(true); // unfreezes player
+        }
+    }
+
+
 }
