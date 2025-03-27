@@ -1,0 +1,56 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FallingPlatform_Audio : MonoBehaviour
+{
+    private Rigidbody rb;
+    private bool hasActivated = false;
+    private Vector3 originalPosition;
+    private Quaternion originalRotation;
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        rb = GetComponentInParent<Rigidbody>();
+        originalPosition = rb.transform.position;
+        originalRotation = rb.transform.rotation;
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!hasActivated && other.CompareTag("Player")) // Ensures it triggers only once
+        {
+            hasActivated = true;
+            if (audioSource != null)
+            {
+                audioSource.Play(); // Play the audio clip
+            }
+            StartCoroutine(FallAfterDelay(1f)); // Delay before falling
+        }
+    }
+
+    IEnumerator FallAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        rb.isKinematic = false; // Enables physics so it falls
+        rb.useGravity = true;
+
+        yield return new WaitForSeconds(3f); // Wait before respawning
+
+        ResetPlatform(); // Call function to reset the platform
+    }
+
+    void ResetPlatform()
+    {
+        rb.isKinematic = true; // Disable physics to reset safely
+        rb.useGravity = false;
+        rb.velocity = Vector3.zero; // Reset velocity
+        rb.angularVelocity = Vector3.zero;
+        rb.transform.position = originalPosition;
+        rb.transform.rotation = originalRotation;
+
+        hasActivated = false; // Allow the platform to be triggered again
+    }
+}
