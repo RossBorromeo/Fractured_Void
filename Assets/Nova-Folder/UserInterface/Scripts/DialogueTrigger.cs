@@ -2,13 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine.UI;
-using TMPro;
-
-
 [System.Serializable]
-
-
 public class DialogueLine
 {
     public string speakerName; // Oliver /Mabel/ Rose
@@ -75,7 +69,7 @@ public class DialogueTrigger : MonoBehaviour
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "You remember her?" });
                 dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "No... I dont think so... " });
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "She has some of your memories too, if anyone knows what happened here its her. " });
-                
+
 
             }
             else if (areaName == "PillarSighting")

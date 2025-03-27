@@ -8,8 +8,6 @@ using TMPro;
 
 public class TaskCompletionManager : MonoBehaviour
 {
-    public static TaskCompletionManager Instance; // singleton
-
     // TextBoxes for the bedroom level
     // for assigning the ui text boxes with the bedroom task prompts 
     public TMP_Text keyTaskText;
@@ -17,22 +15,14 @@ public class TaskCompletionManager : MonoBehaviour
 
 
     // TextBoxes for garden level
-    public TMP_Text findRoseTaskText;
-    public TMP_Text findFlowersTaskText;
-    public TMP_Text placeFlowersTaskText;
 
 
-    // bedroom
+
 
     public string keyID = "KeyOne";
     public Animator doorAnimator;       // assign the Animator of the door
     private bool keyCollected = false;
     private bool doorOpened = false;
-
-    // garden
-   public bool flowersCollected = false;
-   public bool flowersPlaced = false;
-   public bool roseFound = false;
 
     void Start()
     {
@@ -62,22 +52,16 @@ public class TaskCompletionManager : MonoBehaviour
             }
         }
         
-        if (flowersCollected == true)
-        {
-            UpdateTaskText(findFlowersTaskText, "Collect All Seasonal flowers");
-        }
-        if (flowersPlaced == true)
-        {
-            UpdateTaskText(placeFlowersTaskText, "Put flowers  in the right place");
-        }
-        if (roseFound == true)
-        {
-            UpdateTaskText(findRoseTaskText, "Find Rose");
-        }
-
+        // checking if the door is opened (collider is disabled)
+        // GameObject door = GameObject.Find(doorID);
+        //if (!doorOpened && door != null && !door.GetComponent<Collider>().enabled)
+        // {
+        //     doorOpened = true;
+        //      UpdateTaskText(doorTaskText, "open Door");
+        //  }
 
     }
-    public void UpdateTaskText(TMP_Text taskText, string taskName)
+    private void UpdateTaskText(TMP_Text taskText, string taskName)
     {
         if (taskText != null)
         {

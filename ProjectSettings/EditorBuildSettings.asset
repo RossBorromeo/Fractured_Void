@@ -36,10 +36,10 @@ EditorBuildSettings:
     path: Assets/Nova-Folder/UserInterface/Scenes/Production/Sprint 14/Rose_Garden_Latest.unity
     guid: c048f5781e5783c4eabb9760d2f35a7c
   - enabled: 0
-    path: Assets/Nova-Folder/Sound_Design/Scenes/Old Scene's/Bedroom_Adam_13th.unity
+    path: Assets/Nova-Folder/Sound_Design/Scenes/Bedroom_Adam_13th.unity
     guid: abd22e910ae0f2341973dba6efb3d41b
   - enabled: 0
-    path: Assets/Nova-Folder/Sound_Design/Scenes/Old Scene's/Movement - Rose Garden.unity
+    path: Assets/Nova-Folder/Sound_Design/Scenes/Movement - Rose Garden.unity
     guid: 9f8b1df5b9ee49541bc0a1585a53d06d
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
