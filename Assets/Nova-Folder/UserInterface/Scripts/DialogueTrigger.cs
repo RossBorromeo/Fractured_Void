@@ -100,9 +100,9 @@ public class DialogueTrigger : MonoBehaviour
             {
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "Is it just me or is this walkway getting longer?" });
             }
-            else if (areaName == "Puzzle2.1.1")
+            else if (areaName == "Puzzle2.2.1")
             {
-                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "Oh perfect! A portal straight back. What could possibly go wrong" });
+                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "Well that did not work..." });
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "Maybe the portals follow a pattern, like the seasons..." });
                 dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "But the seasons dont have assigned colours!" });
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "No... But the flowers OF the seasons do." });
@@ -114,6 +114,7 @@ public class DialogueTrigger : MonoBehaviour
             else if (areaName == "Puzzle2.3")
             {
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "Ehhhh, I don’t remember it looking like this... " });
+                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "Oh perfect! A portal straight back. What could possibly go wrong" });
             }
             else if (areaName == "Puzzle3")
             {
