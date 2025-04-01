@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class PlayerFlowerInteraction_Audio : MonoBehaviour
 {
-    private bool hasFlower1 = false;
-    private bool hasFlower2 = false;
-    private bool placedFlower1 = false;
-    private bool placedFlower2 = false;
+    private bool hasTulip = false;
+    private bool hasMarigold = false;
+    private bool hasAster = false;
+    private bool hasPoinsettia = false;
 
-    public Transform platform; // Assign the rising platform
-    public float riseHeight = 5f; // How high the platform rises
-    public float riseSpeed = 2f; // Speed of rising
+    private bool placedTulip = false;
+    private bool placedMarigold = false;
+    private bool placedAster = false;
+    private bool placedPoinsettia = false;
 
     public float interactionRadius = 2f; // Range for detection
 
     public AudioClip pickupSound; // Assign the pickup sound in the inspector
     private AudioSource audioSource;
+
+    public GameObject SpringLight;
+    public GameObject SummerLight;
+    public GameObject AutumnLight;
+    public GameObject WinterLight;
+
+    public Animator gateAnimator; // Assign the gate animator in the inspector
+    public GameObject MainGateBarrier; // Assign the barrier object to disable after opening the gate
 
     private void Start()
     {
@@ -39,18 +48,34 @@ public class PlayerFlowerInteraction_Audio : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, flower.transform.position) <= interactionRadius)
             {
-                if (flower.name == "Tulip" && !hasFlower1)
+                if (flower.name == "Tulip" && !hasTulip)
                 {
-                    hasFlower1 = true;
-                    Debug.Log("Collected Flower 1");
+                    hasTulip = true;
+                    Debug.Log("Collected Tulip");
                     Destroy(flower);
                     PlaySound(pickupSound);
                     return;
                 }
-                else if (flower.name == "Aster" && !hasFlower2)
+                else if (flower.name == "Marigold" && !hasMarigold)
                 {
-                    hasFlower2 = true;
-                    Debug.Log("Collected Flower 2");
+                    hasMarigold = true;
+                    Debug.Log("Collected Marigold");
+                    Destroy(flower);
+                    PlaySound(pickupSound);
+                    return;
+                }
+                else if (flower.name == "Aster" && !hasAster)
+                {
+                    hasAster = true;
+                    Debug.Log("Collected Aster");
+                    Destroy(flower);
+                    PlaySound(pickupSound);
+                    return;
+                }
+                else if (flower.name == "Poinsettia" && !hasPoinsettia)
+                {
+                    hasPoinsettia = true;
+                    Debug.Log("Collected Poinsettia");
                     Destroy(flower);
                     PlaySound(pickupSound);
                     return;
@@ -61,44 +86,55 @@ public class PlayerFlowerInteraction_Audio : MonoBehaviour
 
     void TryPlaceFlower()
     {
-        GameObject[] pillars = GameObject.FindGameObjectsWithTag("PillarTriggerZone"); // Detect trigger zones
+        GameObject[] pillars = GameObject.FindGameObjectsWithTag("PillarTriggerZone");
         foreach (GameObject pillarZone in pillars)
         {
             if (Vector3.Distance(transform.position, pillarZone.transform.position) <= interactionRadius)
             {
-                if (pillarZone.name == "Pillar1TriggerZone" && hasFlower1 && !placedFlower1)
+                if (pillarZone.name == "Pillar1TriggerZone" && hasTulip && !placedTulip)
                 {
-                    placedFlower1 = true;
-                    hasFlower1 = false;
-                    Debug.Log("Placed Flower 1 on Pillar 1");
+                    placedTulip = true;
+                    hasTulip = false;
+                    Debug.Log("Placed Tulip on Pillar 1");
+                    if (SpringLight != null) SpringLight.SetActive(true);
                 }
-                else if (pillarZone.name == "Pillar2TriggerZone" && hasFlower2 && !placedFlower2)
+                else if (pillarZone.name == "Pillar2TriggerZone" && hasMarigold && !placedMarigold)
                 {
-                    placedFlower2 = true;
-                    hasFlower2 = false;
-                    Debug.Log("Placed Flower 2 on Pillar 2");
+                    placedMarigold = true;
+                    hasMarigold = false;
+                    Debug.Log("Placed Marigold on Pillar 2");
+                    if (SummerLight != null) SummerLight.SetActive(true);
+                }
+                else if (pillarZone.name == "Pillar3TriggerZone" && hasAster && !placedAster)
+                {
+                    placedAster = true;
+                    hasAster = false;
+                    Debug.Log("Placed Aster on Pillar 3");
+                    if (AutumnLight != null) AutumnLight.SetActive(true);
+                }
+                else if (pillarZone.name == "Pillar4TriggerZone" && hasPoinsettia && !placedPoinsettia)
+                {
+                    placedPoinsettia = true;
+                    hasPoinsettia = false;
+                    Debug.Log("Placed Poinsettia on Pillar 4");
+                    if (WinterLight != null) WinterLight.SetActive(true);
                 }
 
-                if (placedFlower1 && placedFlower2)
+                if (placedTulip && placedMarigold && placedAster && placedPoinsettia)
                 {
-                    Debug.Log("Both flowers placed! Raising platform...");
-                    StartCoroutine(RaisePlatform());
+                    Debug.Log("All flowers placed! Opening gate...");
+                    if (gateAnimator != null)
+                    {
+                        gateAnimator.SetTrigger("GateOpen");
+                    }
+                    if (MainGateBarrier != null)
+                    {
+                        MainGateBarrier.SetActive(false);
+                    }
                 }
-                return; // Stop checking once valid placement is found
+                return;
             }
         }
-    }
-
-    IEnumerator RaisePlatform()
-    {
-        Vector3 targetPosition = platform.position + new Vector3(0, riseHeight, 0);
-
-        while (platform.position.y < targetPosition.y)
-        {
-            platform.position = Vector3.MoveTowards(platform.position, targetPosition, riseSpeed * Time.deltaTime);
-            yield return null;
-        }
-        Debug.Log("Platform has risen!");
     }
 
     void PlaySound(AudioClip clip)
