@@ -36,7 +36,7 @@ public class FlowerTaskTracker : MonoBehaviour
             if (collectedFlowers >= totalFlowers)
             {
                 flowersCollectedComplete = true;
-                TaskCompletionManager.Instance.UpdateTaskText(TaskCompletionManager.Instance.findFlowersTaskText, "Collect All Seasonal Flowers");
+                TaskCompletionManagerRoseGarden.Instance.UpdateTaskText(TaskCompletionManagerRoseGarden.Instance.findFlowersTaskText, "Collect All Seasonal Flowers");
             }
         }
     }
@@ -51,7 +51,7 @@ public class FlowerTaskTracker : MonoBehaviour
             if (placedFlowers >= totalPillars)
             {
                 flowersPlacedComplete = true;
-                TaskCompletionManager.Instance.UpdateTaskText(TaskCompletionManager.Instance.placeFlowersTaskText, "Put Flowers in the Right Place");
+                TaskCompletionManagerRoseGarden.Instance.UpdateTaskText(TaskCompletionManagerRoseGarden.Instance.placeFlowersTaskText, "Put Flowers in the Right Place");
             }
         }
     }

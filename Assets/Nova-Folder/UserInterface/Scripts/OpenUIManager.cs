@@ -10,10 +10,16 @@ public class OpenUIManager : MonoBehaviour
     public GameObject HUDHouse;
     public GameObject ClickedHouse;
     public GameObject HouseExitButton;
+   
     /* Journal elements */
     public GameObject HUDJournal;
     public GameObject ClickedJournalOpen;
     public GameObject JournalExitButton;
+
+    /* Options elements */
+    public GameObject HUDOptions;
+    public GameObject ClickedOptions;
+    public GameObject OptionsExitButton;
 
     private void Awake()
     {
@@ -56,6 +62,24 @@ public class OpenUIManager : MonoBehaviour
     {
         ClickedJournalOpen.SetActive(false);
         JournalExitButton.SetActive(false);
+        HUDJournal.SetActive(true);
+    }
+    public void OpenOptionsUI()
+    {
+        if (ClickedOptions.activeSelf) return; // Prevent opening if Options is open
+
+        HUDOptions.SetActive(false);
+        ClickedOptions.SetActive(true);
+        OptionsExitButton.SetActive(true);
+
+        HUDJournal.SetActive(false);
+    }
+
+    public void CloseOptionsUI()
+    {
+        ClickedOptions.SetActive(false);
+        OptionsExitButton.SetActive(false);
+        HUDOptions.SetActive(true);
         HUDJournal.SetActive(true);
     }
 }
