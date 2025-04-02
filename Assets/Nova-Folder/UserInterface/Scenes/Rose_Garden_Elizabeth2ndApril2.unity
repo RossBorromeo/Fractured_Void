@@ -50696,7 +50696,7 @@ GameObject:
   - component: {fileID: 479996964}
   - component: {fileID: 479996966}
   - component: {fileID: 479996968}
-  - component: {fileID: 479996967}
+  - component: {fileID: 479996971}
   - component: {fileID: 479996969}
   - component: {fileID: 479996970}
   m_Layer: 0
@@ -50748,28 +50748,6 @@ MonoBehaviour:
   journalManager: {fileID: 479996968}
   audioSource: {fileID: 1717888094}
   clickSound: {fileID: 8300000, guid: 9c85d161998a6e94da84cb5583b2a3f3, type: 3}
---- !u!114 &479996967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479996963}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dc20a387a825084dbf2ef94560ecd48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyTaskText: {fileID: 0}
-  doorTaskText: {fileID: 0}
-  findRoseTaskText: {fileID: 725771089}
-  findFlowersTaskText: {fileID: 1521735460}
-  placeFlowersTaskText: {fileID: 1673162595}
-  keyID: 
-  doorAnimator: {fileID: 0}
-  flowersCollected: 0
-  flowersPlaced: 0
-  roseFound: 0
 --- !u!114 &479996968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50818,6 +50796,24 @@ MonoBehaviour:
   OptionsExitButton: {fileID: 1360616222}
   journalManager: {fileID: 479996968}
   houseManager: {fileID: 479996966}
+--- !u!114 &479996971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479996963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70a2a6dad4aa5c44d818e3f02febb999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  findRoseTaskText: {fileID: 725771089}
+  findFlowersTaskText: {fileID: 1521735460}
+  placeFlowersTaskText: {fileID: 1673162595}
+  flowersCollected: 0
+  flowersPlaced: 0
+  roseFound: 0
 --- !u!1001 &481410523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59517,7 +59513,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583352256}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1618604, y: -0.0013082767, z: 0.00021458801, w: 0.9868128}
+  m_LocalRotation: {x: 0.16185898, y: 0.0043535237, z: -0.0007140799, w: 0.98680407}
   m_LocalPosition: {x: -60.059433, y: 10.705778, z: -0.06990814}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -133669,7 +133665,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373622956}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10783191, y: -0.68807715, z: 0.10451282, w: 0.709929}
+  m_LocalRotation: {x: 0.10805978, y: -0.6865259, z: 0.104277186, w: 0.7114293}
   m_LocalPosition: {x: -24.217682, y: 16.965778, z: 13.148102}
   m_LocalScale: {x: 6.7, y: 1.28, z: 1}
   m_ConstrainProportionsScale: 0
@@ -163017,7 +163013,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1717888088}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1618604, y: -0.0013082768, z: 0.00021458803, w: 0.9868128}
+  m_LocalRotation: {x: 0.161859, y: 0.004353524, z: -0.00071408, w: 0.98680407}
   m_LocalPosition: {x: -60.059433, y: 10.705778, z: -0.06990814}
   m_LocalScale: {x: 1.3536001, y: 1.3536001, z: 1.3536001}
   m_ConstrainProportionsScale: 0
@@ -189624,7 +189620,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941371498}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12737803, y: 0.29295114, z: -0.039412912, w: 0.9467846}
+  m_LocalRotation: {x: 0.12723424, y: 0.29638305, z: -0.03987463, w: 0.94571596}
   m_LocalPosition: {x: -69.00937, y: 10.705778, z: -0.10385895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
