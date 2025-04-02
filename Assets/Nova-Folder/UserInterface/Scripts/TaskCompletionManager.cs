@@ -12,10 +12,7 @@ public class TaskCompletionManager : MonoBehaviour
     public TMP_Text keyTaskText;
     public TMP_Text doorTaskText;
 
-    // TextBoxes for the garden level
-    public TMP_Text findRoseTaskText;
-    public TMP_Text findFlowersTaskText;
-    public TMP_Text placeFlowersTaskText;
+    
 
     // bedroom variables
     public string keyID = "KeyOne";  // Unique ID for the key
@@ -23,10 +20,6 @@ public class TaskCompletionManager : MonoBehaviour
     private bool keyCollected = false; // Tracks if the key has been collected
     private bool doorOpened = false;  // Tracks if the door has been opened
 
-    // garden variables
-    public bool flowersCollected = false;  // Tracks if all flowers have been collected
-    public bool flowersPlaced = false;     // Tracks if flowers have been placed correctly
-    public bool roseFound = false;         // Tracks if Rose has been found
 
     private void Awake()
     {
@@ -71,23 +64,7 @@ public class TaskCompletionManager : MonoBehaviour
             }
         }
 
-        // checking if flowers have been collected
-        if (flowersCollected == true)
-        {
-            UpdateTaskText(findFlowersTaskText, "Collect All Seasonal flowers");
-        }
-
-        // checking if flowers have been placed
-        if (flowersPlaced == true)
-        {
-            UpdateTaskText(placeFlowersTaskText, "Put flowers in the right place");
-        }
-
-        // checking if Rose has been found
-        if (roseFound == true)
-        {
-            UpdateTaskText(findRoseTaskText, "Find Rose");
-        }
+        
     }
 
     // Function to update and cross out completed tasks in the UI
