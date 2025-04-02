@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Nova-Folder/LevelDesign/Scenes/Rose_Garden_Ross_2nd.unity
     guid: 0994ab4db33b1384c9850a7def819fa5
   - enabled: 1
+    path: Assets/Nova-Folder/UserInterface/Scenes/FlashbackCutscene.unity
+    guid: a3e344495bf7b5d4787ca0c31c2d5572
+  - enabled: 1
     path: Assets/Nova-Folder/LevelDesign/Scenes/FlashBack_Scene.unity
     guid: a1a2b01ecd571274bb9892eb1d5c3e7c
   - enabled: 0

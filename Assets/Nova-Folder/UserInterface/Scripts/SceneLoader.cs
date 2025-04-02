@@ -47,16 +47,21 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    // Loads Bedroom
+    // Loads Opening
     public void LoadCutscen()
     {
         SceneManager.LoadScene(2);
     }
-
+    
     // Loads Rose Garden
     public void LoadGarden()
     {
         SceneManager.LoadScene(3);
+    }
+    // Loads Flashback
+    public void LoadFlashCutscen()
+    {
+        SceneManager.LoadScene(4);
     }
 
     // Loads Menu  
