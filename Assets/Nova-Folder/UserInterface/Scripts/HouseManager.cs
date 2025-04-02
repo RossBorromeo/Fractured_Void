@@ -16,7 +16,7 @@ public class HouseManager : MonoBehaviour
     private bool roseWindowTrigger = false; // trigger boolean to check if player has reached Rose princess -> then they can trigger window
 
 
-
+    public OptionsManager optionsManager; // reference to OptionsManager
     public JournalManager journalManager; // Reference to JournalManager
 
 
@@ -25,7 +25,8 @@ public class HouseManager : MonoBehaviour
     public void OnHouseClick()
     {
         // Prevent house from opening if the journal is open
-        if (journalManager != null && journalManager.IsJournalOpen())
+        if (journalManager != null && journalManager.IsJournalOpen() ||
+            (optionsManager != null && optionsManager.IsOptionsOpen())) 
         {
             return;
         }

@@ -15,6 +15,7 @@ public class JournalManager : MonoBehaviour
     public AudioClip journalClickSound; // Adam
 
     //public GameObject HouseUI;
+    public OptionsManager optionsManager; // Reference to OptionsManager
     public HouseManager houseManager; // Reference to HouseManager
     public void OnJournalClick()
     {
@@ -24,7 +25,8 @@ public class JournalManager : MonoBehaviour
         }
 
         // Prevent journal from opening if the house is open
-        if (houseManager != null && houseManager.IsHouseOpen())
+        if (houseManager != null && houseManager.IsHouseOpen() ||
+            (optionsManager != null && optionsManager.IsOptionsOpen())) 
         {
             return;
         }

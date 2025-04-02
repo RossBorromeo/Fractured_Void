@@ -76,7 +76,7 @@ public class DialogueTrigger : MonoBehaviour
             {
                 dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "I don’t remember this being here before!" });
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "It definitely wasn’t, Rose has been busy What could these symbols mean?" });
-                dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "There seasons, I remember…  " });
+                dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "They're seasons, I remember…  " });
                 dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "I remember Gran used to grow different flowers in different seasons." });
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "I never did pay attention to Gran's Botany lessons. Do you see any here?" });
                 dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "Tulips. They were her favourite Spring flower.   " });
