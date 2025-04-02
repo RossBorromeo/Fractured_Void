@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Nova-Folder/LevelDesign/Scenes/Bedroom_Ross_30th.unity
     guid: 861d56729e4e75343847c9c2304313d2
   - enabled: 1
+    path: Assets/Nova-Folder/LevelDesign/Scenes/Rose_Garden_Ross_2nd.unity
+    guid: 0994ab4db33b1384c9850a7def819fa5
+  - enabled: 1
+    path: Assets/Nova-Folder/LevelDesign/Scenes/FlashBack_Scene.unity
+    guid: a1a2b01ecd571274bb9892eb1d5c3e7c
+  - enabled: 0
     path: Assets/Nova-Folder/UserInterface/Scenes/Rose_Garden_Elizabeth_2ndAprril.unity
     guid: 33f312445e5294e4a8495f33972a182a
   m_configObjects: {}
