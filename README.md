@@ -42,8 +42,8 @@ This section provides a list of sources, references, and assets used in the deve
   
 
 ### 🎶 Audio & Sound Effects
-- **Background Music** – [Source or "Original Composition" if custom-made]
-- **UI Sound Effects** – [Source (e.g., FreeSound, Kenney, custom-made)]
+- **Background Music** – [Original Composition]
+- **UI Sound Effects** – [Soundly]
 - **Character Voice Lines (if applicable)** – [Source or credit to voice actors]
 
 ### 📜 Level Design Assets & Tutorials and Technical Refernces 
