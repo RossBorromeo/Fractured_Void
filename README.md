@@ -21,13 +21,13 @@ This section provides a list of sources, references, and assets used in the deve
 - **Regualar Pixel Font** – [1001Fonts](https://www.1001fonts.com/vcr-jp-font.html)
 - **Title Font Original (before Pixel editing)** - [fontspace](https://www.fontspace.com/farewell-font-f47249)
   ### 🔎Technical References for UI Implementation 
-  #####*Dialogue*
+  #### *Dialogue*
 - **Dialogue System Video** - [YouTube](https://www.youtube.com/watch?v=_nRzoTzeyxU)
 - **Dialogue Systems in Unity ** - [gamedevbeginner.com](https://gamedevbeginner.com/dialogue-systems-in-unity/)
 - **Creating Dialogue System in Unity** - [](https://blog.yarsalabs.com/creating-a-dialogue-system-in-unity/)
 - **Dialogue System Tutorial** - [YouTube Link](https://www.youtube.com/live/p4a_OYmk1uU?t=603s)
 - **Dialogue** - [Youtube Link](https://www.1001fonts.com/bitgamefont-font.html)
-  ##### *Hover*
+  #### *Hover*
   - **Unity Hover Script** - [YouTube](https://www.youtube.com/watch?v=KyGNurlLiKw&t=329s)
   #### *HealthBar UI*
   - **Player Health System Heart Display** - [YouTube](https://youtu.be/uqGkNTFzYXM?si=u5TOZFAaU9QUDfyv)
