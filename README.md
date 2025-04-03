@@ -20,24 +20,24 @@ This section provides a list of sources, references, and assets used in the deve
 - **Dialogue Stylised Pixel Font** – [1001Fonts](https://www.1001fonts.com/bitgamefont-font.html)
 - **Regualar Pixel Font** – [1001Fonts](https://www.1001fonts.com/vcr-jp-font.html)
 - **Title Font Original (before Pixel editing)** - [fontspace](https://www.fontspace.com/farewell-font-f47249)
-  #### 🔎Technical References for Implementation 
-  #####Dialogue 
+  ### 🔎Technical References for UI Implementation 
+  #####*Dialogue*
 - **Dialogue System Video** - [YouTube](https://www.youtube.com/watch?v=_nRzoTzeyxU)
 - **Dialogue Systems in Unity ** - [gamedevbeginner.com](https://gamedevbeginner.com/dialogue-systems-in-unity/)
 - **Creating Dialogue System in Unity** - [](https://blog.yarsalabs.com/creating-a-dialogue-system-in-unity/)
-- **Dialogue System Tutorial** - [YouTube](https://www.youtube.com/live/p4a_OYmk1uU?t=603s)
-- **Dialogue** - [](https://www.1001fonts.com/bitgamefont-font.html)
-  #####Hover
+- **Dialogue System Tutorial** - [YouTube Link](https://www.youtube.com/live/p4a_OYmk1uU?t=603s)
+- **Dialogue** - [Youtube Link](https://www.1001fonts.com/bitgamefont-font.html)
+  ##### *Hover*
   - **Unity Hover Script** - [YouTube](https://www.youtube.com/watch?v=KyGNurlLiKw&t=329s)
-  #### HealthBar UI
+  #### *HealthBar UI*
   - **Player Health System Heart Display** - [YouTube](https://youtu.be/uqGkNTFzYXM?si=u5TOZFAaU9QUDfyv)
   - **Dynamic Heart System** - [YouTube](https://www.youtube.com/watch?v=lBRwsl25jUs )
-  #### Cutscene Implementation
+  #### *Cutscene Implementation*
   - **How to play a video in Unity** - [YouTube](https://www.youtube.com/watch?v=-XzVq7qIuys)
    - **Add an Intro Cutscene (useful for after credits)** - [Youtube](https://www.youtube.com/watch?v=NnPDJfvLeWQ)
- #### Other Code Used
+ #### *Other Code Used*
   - **Strikethrough Source** - [Unity3D, implemented into ](https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/TextMeshPro/RichTextStrikethroughUnderline.html)
-  #### Typing
+  #### *Typing*
   - **Typing text effect(Properly implemetned in Post)** - [gamedevbeginner.com](https://gamedevbeginner.com/how-to-create-a-typewriter-text-effect-in-unity/)
   
 
