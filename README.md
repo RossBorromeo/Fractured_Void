@@ -16,7 +16,7 @@ This section provides a list of sources, references, and assets used in the deve
 - **Buttons For Settings and Options Menu** – [[Itch.io free asset](https://cazwolf.itch.io/caz-pixel-keyboard)]
 - **Pixel UI Buttons(Exit button only) ** – [[Itch.io](https://normiebuster.itch.io/pixel-ui-buttons)]
 - **Background For Settings Menu** – [[CraftPix.Net](https://craftpix.net/freebies/free-sky-with-clouds-background-pixel-art-set/?num=3&count=760&sq=pixel%20ui&pos=11)]
-- **HandWritten Font ** – [fontspace]((https://www.fontspace.com/rdj-hand-font-f21147))
+- **HandWritten Font ** – [fontspace](https://www.fontspace.com/rdj-hand-font-f21147)
 - **Dialogue Stylised Pixel Font** – [1001Fonts](https://www.1001fonts.com/bitgamefont-font.html)
 - **Regualar Pixel Font** – [1001Fonts](https://www.1001fonts.com/vcr-jp-font.html)
 - **Title Font Original (before Pixel editing)** - [fontspace](https://www.fontspace.com/farewell-font-f47249)
