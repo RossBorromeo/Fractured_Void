@@ -41,6 +41,12 @@ public class SceneLoader : MonoBehaviour
             }
         }
 
+    public void ReloadCurrentScene()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; 
+        SceneManager.LoadScene(currentSceneIndex); // reloads the current scene
+    }
+
     // Loads Bedroom
     public void LoadBedroom()
     {
@@ -69,4 +75,5 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
 }
