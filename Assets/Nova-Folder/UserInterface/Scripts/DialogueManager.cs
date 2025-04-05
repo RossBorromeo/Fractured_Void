@@ -24,6 +24,7 @@ public class DialogueManager : MonoBehaviour
 
     private PlayerMovement playerMovement; // reference to player movement script
 
+
     public static DialogueManager Instance; // singleton
     private void Awake()
     {

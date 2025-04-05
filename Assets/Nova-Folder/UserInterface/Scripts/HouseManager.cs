@@ -19,11 +19,41 @@ public class HouseManager : MonoBehaviour
     public OptionsManager optionsManager; // reference to OptionsManager
     public JournalManager journalManager; // Reference to JournalManager
 
+    private PlayerMovement playerMovement; // reference to player movement script
+
 
     public AudioSource audioSource; //Adam
     public AudioClip clickSound;    //Adam
+
+
+    public static HouseManager Instance; // singleton
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        // finds player and gets the PlayerMovement script
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerMovement = player.GetComponent<PlayerMovement>();
+        }
+
+    }
+
+
+
+
+
     public void OnHouseClick()
     {
+
         // Prevent house from opening if the journal is open
         if (journalManager != null && journalManager.IsJournalOpen() ||
             (optionsManager != null && optionsManager.IsOptionsOpen())) 
@@ -41,29 +71,15 @@ public class HouseManager : MonoBehaviour
         HouseExitButton.SetActive(true);
         MabelWindow.SetActive(true);// shows Mabel's window
         Time.timeScale = 0; // pauses the game
-
+        PausePlayerMovement(); // Pause movement when dialogue starts
         if (RoseWindow != null) RoseWindow.SetActive(roseWindowTrigger);
-        /*
 
-        if (HUDHouse != null)
-        {
-            HUDHouse.SetActive(false); 
-        }
-
-        if (ClickedHouse != null)
-        {
-            Time.timeScale = 0;
-
-            ClickedHouse.SetActive(true); 
-            HouseExitButton.SetActive(true);
-            MabelWindow.SetActive(true);// shows Mabel's window
-        }
         
-        */
     }
 
     public void CloseBigHouse()
     {
+        ResumePlayerMovement(); // resumes movement when dialogue ends
         if (audioSource != null && clickSound != null)
         {
             audioSource.PlayOneShot(clickSound);
@@ -90,6 +106,21 @@ public class HouseManager : MonoBehaviour
     public bool IsHouseOpen()
     {
         return ClickedHouse.activeSelf;
+    }
+    private void PausePlayerMovement()
+    {
+        if (playerMovement != null)
+        {
+            playerMovement.SetMovementEnabled(false); // freezes player
+        }
+    }
+
+    private void ResumePlayerMovement()
+    {
+        if (playerMovement != null)
+        {
+            playerMovement.SetMovementEnabled(true); // unfreezes player
+        }
     }
 
 

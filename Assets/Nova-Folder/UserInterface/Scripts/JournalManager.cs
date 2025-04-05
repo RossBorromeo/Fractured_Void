@@ -14,9 +14,32 @@ public class JournalManager : MonoBehaviour
     public AudioSource audioSource; // Adam
     public AudioClip journalClickSound; // Adam
 
-    //public GameObject HouseUI;
+    
     public OptionsManager optionsManager; // Reference to OptionsManager
     public HouseManager houseManager; // Reference to HouseManager
+
+    private PlayerMovement playerMovement; // reference to player movement script
+
+    public static JournalManager Instance; // singleton
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        // finds player and gets the PlayerMovement script
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerMovement = player.GetComponent<PlayerMovement>();
+        }
+
+    }
     public void OnJournalClick()
     {
         if (audioSource != null && journalClickSound != null)
@@ -36,10 +59,12 @@ public class JournalManager : MonoBehaviour
         ClickedJournalOpen.SetActive(true);// shows the ClickedJournalOpen
         JournalExitButton.SetActive(true);
         Time.timeScale = 0; // Pause the game
+        PausePlayerMovement(); // Pause movement when dialogue starts
     }
 
     public void CloseJournal()
     {
+       
         if (ClickedJournalOpen != null)
         {
 
@@ -54,7 +79,7 @@ public class JournalManager : MonoBehaviour
 
         if (HUDJournal != null)
         {
-
+            ResumePlayerMovement(); // resumes movement when dialogue ends
             Time.timeScale =1;
             HUDJournal.SetActive(true); // shows the HUDJournal again
         }
@@ -64,6 +89,20 @@ public class JournalManager : MonoBehaviour
     {
         return ClickedJournalOpen.activeSelf;
     }
+    private void PausePlayerMovement()
+    {
+        if (playerMovement != null)
+        {
+            playerMovement.SetMovementEnabled(false); // freezes player
+        }
+    }
 
+    private void ResumePlayerMovement()
+    {
+        if (playerMovement != null)
+        {
+            playerMovement.SetMovementEnabled(true); // unfreezes player
+        }
+    }
 
 }

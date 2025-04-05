@@ -33,7 +33,7 @@ public class DialogueTrigger : MonoBehaviour
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "See! I knew you’d remember! I knew you were ready. " });
                 dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "What is this place? I have so many questions. What happened here?" });
                 dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "I feel so… wrong" });
-                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "I know. This is a lot to take in, we are in your room, or at least a version of it." });
+                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "I know. This is a lot to take in." });
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "We are in your bedroom, or at least a version of it." });
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "I promise to answer more questions but for right now lets get you out of here." });
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "Make sure to check your Journal if you are ever confused" });
@@ -66,7 +66,7 @@ public class DialogueTrigger : MonoBehaviour
             else if (areaName == "RoseSighting")
             {
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "That’s Rose, she controls this garden now.  " });
-                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "You remember her?" });
+                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "Do you remember her?" });
                 dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "No... I dont think so... " });
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "She has some of your memories too, if anyone knows what happened here its her. " });
 
@@ -75,7 +75,7 @@ public class DialogueTrigger : MonoBehaviour
             else if (areaName == "PillarSighting")
             {
                 dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "I don’t remember this being here before!" });
-                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "It definitely wasn’t, Rose has been busy What could these symbols mean?" });
+                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "It definitely wasn’t, Rose has been busy. What could these symbols mean?" });
                 dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "They're seasons, I remember…  " });
                 dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "I remember Gran used to grow different flowers in different seasons." });
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "I never did pay attention to Gran's Botany lessons. Do you see any here?" });
