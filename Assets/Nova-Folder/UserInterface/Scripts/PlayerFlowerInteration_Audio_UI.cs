@@ -27,6 +27,10 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
     public Animator gateAnimator; // Assign the gate animator in the inspector
     public GameObject MainGateBarrier; // Assign the barrier object to disable after opening the gate
 
+    public GameObject Puzzle1PortalBack; // Activate when Aster is picked up
+    public GameObject Vines; // De-Activate when Aster is picked up
+
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -79,6 +83,8 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
                     FlowerTaskTracker.Instance.CollectFlower();
                     TaskCompletionManagerRoseGarden.Instance.flowersCollected = true;
                     TaskCompletionManagerRoseGarden.Instance.UpdateTaskText(TaskCompletionManagerRoseGarden.Instance.findFlowersTaskText, "Collect All Seasonal Flowers");
+                    if (Puzzle1PortalBack != null) Puzzle1PortalBack.SetActive(true);
+                    if (Vines != null) Vines.SetActive(false);
                     return;
                 }
                 else if (flower.name == "Poinsettia" && !hasPoinsettia)

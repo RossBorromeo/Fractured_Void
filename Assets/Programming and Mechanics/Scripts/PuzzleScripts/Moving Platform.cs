@@ -9,16 +9,21 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private float depthMoveDistance = 3f;
     [SerializeField] private float speed = 2f;
     [SerializeField] private float startDelay = 2f;
+    [SerializeField] private float pauseTimeAtEnds = 0.5f;
 
     private Vector3 _startPosition;
     private Vector3 _targetPosition;
     private bool _movingToTarget = true;
     private bool _isMoving = false;
+    private Transform _playerOnPlatform;
+
+    private Vector3 _lastPosition;
 
     void Start()
     {
         _startPosition = transform.position;
         _targetPosition = _startPosition + new Vector3(horizontalMoveDistance, verticalMoveHeight, depthMoveDistance);
+        _lastPosition = _startPosition;
         StartCoroutine(StartMovementAfterDelay());
     }
 
@@ -27,11 +32,22 @@ public class MovingPlatform : MonoBehaviour
         if (!_isMoving) return;
 
         float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, _movingToTarget ? _targetPosition : _startPosition, step);
+        Vector3 destination = _movingToTarget ? _targetPosition : _startPosition;
+        transform.position = Vector3.MoveTowards(transform.position, destination, step);
 
-        if (Vector3.Distance(transform.position, _movingToTarget ? _targetPosition : _startPosition) < 0.01f)
+        // Move player with platform manually
+        if (_playerOnPlatform != null)
         {
-            _movingToTarget = !_movingToTarget;
+            Vector3 platformDelta = transform.position - _lastPosition;
+            _playerOnPlatform.position += platformDelta;
+        }
+
+        _lastPosition = transform.position;
+
+        if (Vector3.Distance(transform.position, destination) < 0.01f)
+        {
+            _isMoving = false;
+            StartCoroutine(PauseAtEndBeforeSwitching());
         }
     }
 
@@ -41,21 +57,28 @@ public class MovingPlatform : MonoBehaviour
         _isMoving = true;
     }
 
+    private IEnumerator PauseAtEndBeforeSwitching()
+    {
+        yield return new WaitForSeconds(pauseTimeAtEnds);
+        _movingToTarget = !_movingToTarget;
+        _isMoving = true;
+    }
+
     // Detect when player steps onto the platform
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            other.transform.SetParent(transform);
+            _playerOnPlatform = other.transform;
         }
     }
 
     // Remove player from platform when they leave
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && _playerOnPlatform == other.transform)
         {
-            other.transform.SetParent(null);
+            _playerOnPlatform = null;
         }
     }
 }
