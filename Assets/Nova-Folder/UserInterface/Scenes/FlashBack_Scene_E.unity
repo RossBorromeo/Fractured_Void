@@ -2416,7 +2416,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -51.092, y: 0.000012398}
+  m_AnchoredPosition: {x: -65, y: 0.000012398}
   m_SizeDelta: {x: 160.2139, y: 221.2533}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199632150
@@ -2439,7 +2439,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Escape
+  m_text: Rose
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b080cf57721d076469fbc5faec48df0b, type: 2}
   m_sharedMaterial: {fileID: -1628829108696273305, guid: b080cf57721d076469fbc5faec48df0b, type: 2}
@@ -4057,7 +4057,7 @@ GameObject:
   - component: {fileID: 357138100}
   - component: {fileID: 357138099}
   m_Layer: 0
-  m_Name: BedroomTask1
+  m_Name: FlashbackTask1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4079,7 +4079,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -62.063, y: -63.2}
+  m_AnchoredPosition: {x: -44, y: -63.2}
   m_SizeDelta: {x: 182.1568, y: 244.5464}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &357138099
@@ -4102,7 +4102,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Find the Key '
+  m_text: 'Talk to Rose '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5ac671169923903439dc3a09c73ef656, type: 2}
   m_sharedMaterial: {fileID: -7896835349003342294, guid: 5ac671169923903439dc3a09c73ef656, type: 2}
@@ -4167,7 +4167,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 179.03757}
+  m_margin: {x: 0, y: 0, z: 8.1050415, w: 179.03757}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7532,6 +7532,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682971067}
   m_CullTransparentMesh: 1
+--- !u!1 &693759411
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 693759412}
+  - component: {fileID: 693759414}
+  - component: {fileID: 693759413}
+  m_Layer: 0
+  m_Name: RoseWindowTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &693759412
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693759411}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -78.826, y: -0.575, z: -169.03}
+  m_LocalScale: {x: 1.2704, y: 1, z: 2.3373}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1172450741}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &693759413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693759411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116fc34081a879a4086c43f43bf25b38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  houseManager: {fileID: 1550237682}
+--- !u!65 &693759414
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693759411}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &698732244 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2156301142423159100, guid: 0fbc1ff1bdd864ea1a318d706b9665aa, type: 3}
@@ -12853,6 +12920,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 273634268}
+  - {fileID: 693759412}
   m_Father: {fileID: 878443653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1174649593
@@ -23368,7 +23436,7 @@ GameObject:
   - component: {fileID: 2145998326}
   - component: {fileID: 2145998325}
   m_Layer: 0
-  m_Name: BedroomTask2
+  m_Name: FlashbackTask2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23390,7 +23458,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -69.7, y: -114.6}
+  m_AnchoredPosition: {x: -60, y: -142}
   m_SizeDelta: {x: 160.2139, y: 221.2533}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2145998325
@@ -23413,7 +23481,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: open the DOOr
+  m_text: Find the letter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5ac671169923903439dc3a09c73ef656, type: 2}
   m_sharedMaterial: {fileID: -7896835349003342294, guid: 5ac671169923903439dc3a09c73ef656, type: 2}
