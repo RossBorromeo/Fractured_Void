@@ -4,30 +4,45 @@ using UnityEngine;
 
 public class LetterTrigger : MonoBehaviour
 {
-
+    public Canvas promptCanvas;
     public Canvas letterCanvas; 
     public GameObject paperPlane ; // The plane object 
 
-   
+    private bool playerInTrigger = false;
+
     private void OnTriggerEnter(Collider other)
     {
-        // check if player enters and presses key
-        if (Input.GetKeyDown(KeyCode.E) && other.CompareTag("Player")) 
+        if (other.CompareTag("Player"))
         {
-            // Make the canvas visible
-            if (letterCanvas!= null)
+            playerInTrigger = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInTrigger = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (playerInTrigger && Input.GetKeyDown(KeyCode.E))
+        {
+            if (letterCanvas != null)
             {
-                letterCanvas.gameObject.SetActive(true); // Show the canvas
+                letterCanvas.gameObject.SetActive(true);
             }
 
-            
             if (paperPlane != null)
             {
-                // Destroy the object
-                //Destroy(paperPlane);
- 
-               paperPlane.SetActive(false); 
+                paperPlane.SetActive(false);
+                promptCanvas.gameObject.SetActive(false);
             }
+
+
+            playerInTrigger = false; // Optional: to prevent repeated activations
         }
     }
 }
