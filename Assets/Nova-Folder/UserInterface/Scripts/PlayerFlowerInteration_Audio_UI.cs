@@ -29,6 +29,7 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
 
     public GameObject Puzzle1PortalBack; // Activate when Aster is picked up
     public GameObject Vines; // De-Activate when Aster is picked up
+    public GameObject BlockingGates; // De-Activate when Tulip is picked up
 
 
     private void Start()
@@ -61,6 +62,7 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
                     FlowerTaskTracker.Instance.CollectFlower();
                     TaskCompletionManagerRoseGarden.Instance.flowersCollected = true;
                     TaskCompletionManagerRoseGarden.Instance.UpdateTaskText(TaskCompletionManagerRoseGarden.Instance.findFlowersTaskText, "Collect All Seasonal Flowers");
+                    if (BlockingGates != null) BlockingGates.SetActive(false);
                     return;
                 }
                 else if (flower.name == "Marigold" && !hasMarigold)

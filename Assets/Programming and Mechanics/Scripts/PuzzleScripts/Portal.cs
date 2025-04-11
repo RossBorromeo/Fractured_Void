@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using Cinemachine;
 
@@ -7,16 +6,13 @@ public class PortalTeleport : MonoBehaviour
     [Tooltip("Assign the destination portal Transform here.")]
     [SerializeField] private Transform destinationPortal;
 
-    private static Vector3 teleportOffset = new Vector3(0, 1, 5); // Universal offset for all portals
     private static CinemachineVirtualCamera cinemachineCam;
-
     private Collider portalCollider;
 
     private void Awake()
     {
         portalCollider = GetComponent<Collider>();
 
-        // Find the Cinemachine Virtual Camera by name (only once)
         if (cinemachineCam == null)
         {
             GameObject vcamObject = GameObject.Find("Vcam PathToSunflower");
@@ -34,57 +30,37 @@ public class PortalTeleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) // Ensure only the player triggers teleportation
+        if (!other.CompareTag("Player")) return;
+
+        if (destinationPortal == null)
         {
-            if (destinationPortal != null)
-            {
-                Collider destinationCollider = destinationPortal.GetComponent<Collider>();
-
-                // **TRACK PLAYER ROTATION STATE BEFORE TELEPORTING**
-                bool wasSideProfile = CameraTriggerRotation.IsSideProfileActive();
-
-                // Disable colliders temporarily to prevent getting stuck
-                if (portalCollider != null) portalCollider.enabled = false;
-                if (destinationCollider != null) destinationCollider.enabled = false;
-
-                // **DO NOT DETACH THE CAMERA!** Just move the player.
-                Vector3 targetPosition = destinationPortal.position + teleportOffset;
-                other.transform.position = targetPosition;
-
-                // Reset velocity to avoid unwanted momentum
-                Rigidbody rb = other.GetComponent<Rigidbody>();
-                if (rb != null)
-                {
-                    rb.velocity = Vector3.zero;
-                }
-
-                // **ENSURE CAMERA & ROTATION STATE PERSIST AFTER TELEPORT**
-                StartCoroutine(ReenableColliders(portalCollider, destinationCollider));
-
-                // **IF PLAYER WAS IN A SIDE-PROFILE ZONE, REAPPLY IT AFTER TELEPORTING**
-                StartCoroutine(ApplySideProfileAfterTeleport(other.transform, wasSideProfile));
-            }
-            else
-            {
-                Debug.LogWarning($"Destination portal not assigned on {gameObject.name}!");
-            }
+            Debug.LogWarning($"Destination portal not assigned on {gameObject.name}!");
+            return;
         }
-    }
 
-    private IEnumerator ReenableColliders(Collider portalCol, Collider destinationCol)
-    {
-        yield return new WaitForSeconds(4.0f); // Small delay to allow the player to move away
-        if (portalCol != null) portalCol.enabled = true;
-        if (destinationCol != null) destinationCol.enabled = true;
-    }
+        // Track player state before teleporting
+        bool wasSideProfile = CameraTriggerRotation.IsSideProfileActive();
 
-    private IEnumerator ApplySideProfileAfterTeleport(Transform playerTransform, bool wasSideProfile)
-    {
-        yield return new WaitForSeconds(0.1f); // Allow teleportation to fully process
+        // Disable this and destination portal colliders briefly (prevent re-trigger)
+        Collider destinationCollider = destinationPortal.GetComponent<Collider>();
+        if (portalCollider != null) portalCollider.enabled = false;
+        if (destinationCollider != null) destinationCollider.enabled = false;
 
+        // Teleport player
+        other.transform.position = destinationPortal.position;
+
+        // Reset velocity to prevent momentum carry
+        Rigidbody rb = other.GetComponent<Rigidbody>();
+        if (rb != null) rb.velocity = Vector3.zero;
+
+        // Immediately re-enable both colliders (no delay)
+        if (portalCollider != null) portalCollider.enabled = true;
+        if (destinationCollider != null) destinationCollider.enabled = true;
+
+        // Reapply side-profile view if applicable
         if (wasSideProfile)
         {
-            CameraTriggerRotation.ForceSideProfile(playerTransform);
+            CameraTriggerRotation.ForceSideProfile(other.transform);
             Debug.Log("[PortalTeleport] Player was in Side Profile mode before teleporting. Reapplying...");
         }
     }
