@@ -14,7 +14,7 @@ public class RunAwayTrigger : MonoBehaviour
 
     [Header("Dialogue")]
     public GameObject dialogueBox;
-    public float dialogueDuration = 2f;
+    public float dialogueDuration = 0.5f;
 
     [Header("Player Reference")]
     [SerializeField] private Transform playerTransform;
