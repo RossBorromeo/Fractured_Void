@@ -6,7 +6,7 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerRespawn playerRespawn = other.GetComponent<PlayerRespawn>();
+            PlayerRespawn_Audio playerRespawn = other.GetComponent<PlayerRespawn_Audio>();
             if (playerRespawn != null)
             {
                 playerRespawn.SetCheckpoint(transform.position);

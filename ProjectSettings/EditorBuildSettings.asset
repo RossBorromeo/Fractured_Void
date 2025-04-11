@@ -12,22 +12,16 @@ EditorBuildSettings:
     path: Assets/Nova-Folder/UserInterface/Scenes/OpeningCutscene.unity
     guid: 5778aeeca852eba4bac527bd1c48d900
   - enabled: 1
-    path: Assets/Programming and Mechanics/Scenes/Bedroom_PostProduction_Josh_6th.unity
-    guid: 30028c830a202f64f99c4346e394ea87
+    path: Assets/Nova-Folder/LevelDesign/Scenes/Bedroom_PostProduction_R_11th.unity
+    guid: e5f548e2f1ba3af41ac8e17d823af3bb
   - enabled: 1
-    path: Assets/Programming and Mechanics/Scenes/Rose_Garden_PostProduction_Josh_6th.unity
-    guid: 94d4e72df39a1d041ad3e6a17b1ca7ca
-  - enabled: 0
-    path: Assets/Nova-Folder/LevelDesign/Scenes/Previous Scenes/Bedroom_Ross_30th.unity
-    guid: 861d56729e4e75343847c9c2304313d2
-  - enabled: 0
-    path: Assets/Nova-Folder/LevelDesign/Scenes/Rose_Garden_Final_Production_Ross.unity
-    guid: 668a4f354137f924a9519d5b41b52802
+    path: Assets/Nova-Folder/LevelDesign/Scenes/Rose_Garden_PostProduction_R_11th.unity
+    guid: 6e15709d05c95ce479d81949b4abdeda
   - enabled: 1
     path: Assets/Nova-Folder/UserInterface/Scenes/FlashbackCutscene.unity
     guid: a3e344495bf7b5d4787ca0c31c2d5572
   - enabled: 1
-    path: Assets/Nova-Folder/LevelDesign/Scenes/Previous Scenes/FlashBack_Scene.unity
-    guid: a1a2b01ecd571274bb9892eb1d5c3e7c
+    path: Assets/Nova-Folder/LevelDesign/Scenes/FlashBack_Scene_R_11th.unity
+    guid: a42a3c63840709548ad53a1c9b2152f6
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
