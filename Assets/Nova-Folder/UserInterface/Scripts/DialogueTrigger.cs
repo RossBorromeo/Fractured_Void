@@ -132,7 +132,7 @@ public class DialogueTrigger : MonoBehaviour
 
             }
 
-            StartCoroutine(StartDialogueAfterDelay(1f));
+            StartCoroutine(StartDialogueAfterDelay(0f));
 
         }
         
