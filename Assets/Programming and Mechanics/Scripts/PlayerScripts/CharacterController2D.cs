@@ -14,6 +14,17 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private float lowJumpMultiplier = 3f; // Makes short jumps more responsive
     [SerializeField] private float groundCheckRadius = 0.1f;
 
+
+    [Header("Step Settings")]
+    [SerializeField] private float stepHeight = 0.3f;
+    [SerializeField] private float stepCheckDistance = 0.2f;
+    [SerializeField] private LayerMask stepLayer;
+    private float ledgeStuckTimer = 0f;
+    [SerializeField] private float ledgeStuckDuration = 1f;
+    [SerializeField] private float ledgeCheckHeight = 0.4f;
+    private bool isBlockedForward = false;
+
+
     private Rigidbody rb;
     private CapsuleCollider capsuleCollider;
     public bool isGrounded { get; private set; } // Public getter for isGrounded
@@ -39,6 +50,9 @@ public class CharacterController2D : MonoBehaviour
             OnLandEvent.Invoke(); // Trigger OnLanding in PlayerMovement
         }
         wasGrounded = isGrounded;
+
+        TryStepUp();
+
 
         ApplyFasterFalling();
     }
@@ -98,4 +112,58 @@ public class CharacterController2D : MonoBehaviour
             Gizmos.DrawWireSphere(bottomPoint, groundCheckRadius);
         }
     }
+
+
+    private void TryStepUp()
+    {
+        Vector3 moveDir = new Vector3(rb.velocity.x, 0, rb.velocity.z).normalized;
+        if (moveDir == Vector3.zero || !isGrounded)
+        {
+            ledgeStuckTimer = 0f;
+            isBlockedForward = false;
+            return;
+        }
+
+        Vector3 origin = transform.position + Vector3.up * 0.1f;
+        Vector3 upperOrigin = transform.position + Vector3.up * stepHeight;
+
+        bool hitLow = Physics.Raycast(origin, moveDir, stepCheckDistance, stepLayer);
+        bool hitHigh = Physics.Raycast(upperOrigin, moveDir, stepCheckDistance, stepLayer);
+
+        if (hitLow)
+        {
+            if (!hitHigh)
+            {
+                // Can step up
+                rb.position += Vector3.up * stepHeight;
+                ledgeStuckTimer = 0f;
+                isBlockedForward = false;
+            }
+            else
+            {
+                // Can't step — blocked
+                ledgeStuckTimer += Time.fixedDeltaTime;
+                isBlockedForward = true;
+
+                if (ledgeStuckTimer >= ledgeStuckDuration)
+                {
+                    // Nudge player slightly back and down to "unstick"
+                    rb.position += (-moveDir * 0.1f) + Vector3.down * 0.1f;
+
+                    // Optionally reduce horizontal velocity to prevent immediate re-stick
+                    rb.velocity = new Vector3(0, rb.velocity.y, 0);
+
+                    ledgeStuckTimer = 0f;
+                }
+            }
+        }
+        else
+        {
+            ledgeStuckTimer = 0f;
+            isBlockedForward = false;
+        }
+    }
+
+
+
 }
