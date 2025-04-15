@@ -12,7 +12,10 @@ public class PlayerHealth : MonoBehaviour
     [Header("Scene Settings")]
     [SerializeField] private string bedroomSceneName = "Bedroom_Elizabeth_6th"; // Editable in Inspector
 
- 
+    [Header("Screen Fader")]
+    [SerializeField] private ScreenFader screenFader;
+
+
 
     private void Start()
     {
@@ -36,12 +39,26 @@ public class PlayerHealth : MonoBehaviour
         if (remaining <= 0)
         {
             Debug.Log($"[PlayerHealth] No hearts left. Loading scene: {bedroomSceneName}");
-            SceneManager.LoadScene(bedroomSceneName); // Now uses Inspector-assigned name
+            SceneManager.LoadScene(bedroomSceneName); // Full death = scene reload
         }
         else
         {
             bool hasCheckpoint = playerRespawn.HasCheckpoint();
-            playerRespawn.Respawn(!hasCheckpoint);
+
+            if (screenFader != null)
+            {
+                screenFader.FadeOutIn(() =>
+                {
+                    playerRespawn.Respawn(!hasCheckpoint);
+                });
+            }
+            else
+            {
+                Debug.LogWarning("ScreenFader not assigned! Respawning without fade.");
+                playerRespawn.Respawn(!hasCheckpoint);
+            }
         }
     }
+
+
 }
