@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
@@ -9,10 +10,10 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
     private bool hasAster = false;
     private bool hasPoinsettia = false;
 
-    private bool placedTulip = false;
-    private bool placedMarigold = false;
-    private bool placedAster = false;
-    private bool placedPoinsettia = false;
+    public bool placedTulip = false;
+    public bool placedMarigold = false;
+    public bool placedAster = false;
+    public bool placedPoinsettia = false;
 
     public float interactionRadius = 4f; // Range for detection
 
@@ -57,6 +58,10 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
                 {
                     hasTulip = true;
                     Debug.Log("Collected Tulip");
+
+                    //disables prompt before destroying the flower 
+                    DisableNearbyPrompt(flower.transform.position);
+
                     Destroy(flower);
                     PlaySound(pickupSound);
                     FlowerTaskTracker.Instance.CollectFlower();
@@ -69,6 +74,10 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
                 {
                     hasMarigold = true;
                     Debug.Log("Collected Marigold");
+
+                    //disables prompt before destroying the flower 
+                    DisableNearbyPrompt(flower.transform.position);
+
                     Destroy(flower);
                     PlaySound(pickupSound);
                     FlowerTaskTracker.Instance.CollectFlower();
@@ -80,7 +89,13 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
                 {
                     hasAster = true;
                     Debug.Log("Collected Aster");
+
+
+                    //disables prompt before destroying the flower 
+                    DisableNearbyPrompt(flower.transform.position);
+
                     Destroy(flower);
+
                     PlaySound(pickupSound);
                     FlowerTaskTracker.Instance.CollectFlower();
                     TaskCompletionManagerRoseGarden.Instance.flowersCollected = true;
@@ -93,6 +108,10 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
                 {
                     hasPoinsettia = true;
                     Debug.Log("Collected Poinsettia");
+
+                    //disables prompt before destroying the flower 
+                    DisableNearbyPrompt(flower.transform.position); 
+
                     Destroy(flower);
                     PlaySound(pickupSound);
                     FlowerTaskTracker.Instance.CollectFlower();
@@ -170,6 +189,18 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
         if (audioSource != null && clip != null)
         {
             audioSource.PlayOneShot(clip);
+        }
+    }
+    void DisableNearbyPrompt(Vector3 flowerPosition)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(flowerPosition, 3f); // 3f = radius, tweak if needed
+        foreach (var hit in hitColliders)
+        {
+            InteractPromptArea prompt = hit.GetComponent<InteractPromptArea>();
+            if (prompt != null && prompt.canvas != null)
+            {
+                prompt.canvas.gameObject.SetActive(false);
+            }
         }
     }
 }
