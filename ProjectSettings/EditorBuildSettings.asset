@@ -12,16 +12,16 @@ EditorBuildSettings:
     path: Assets/Nova-Folder/UserInterface/Scenes/OpeningCutscene.unity
     guid: 5778aeeca852eba4bac527bd1c48d900
   - enabled: 0
-    path: Assets/Nova-Folder/LevelDesign/Scenes/Bedroom_PostProduction_R_11th.unity
+    path: Assets/Nova-Folder/LevelDesign/Scenes/Previous Scenes/Bedroom_PostProduction_R_11th.unity
     guid: e5f548e2f1ba3af41ac8e17d823af3bb
   - enabled: 0
-    path: Assets/Nova-Folder/LevelDesign/Scenes/Rose_Garden_PostProduction_R_11th.unity
+    path: Assets/Nova-Folder/LevelDesign/Scenes/Previous Scenes/Rose_Garden_PostProduction_R_11th.unity
     guid: 6e15709d05c95ce479d81949b4abdeda
   - enabled: 0
     path: Assets/Nova-Folder/UserInterface/Scenes/FlashbackCutscene.unity
     guid: a3e344495bf7b5d4787ca0c31c2d5572
   - enabled: 0
-    path: Assets/Nova-Folder/LevelDesign/Scenes/FlashBack_Scene_R_11th.unity
+    path: Assets/Nova-Folder/LevelDesign/Scenes/Previous Scenes/FlashBack_Scene_R_11th.unity
     guid: a42a3c63840709548ad53a1c9b2152f6
   - enabled: 1
     path: Assets/Nova-Folder/UserInterface/Scenes/April15th/Bedroom_PostProduction_E_15th.unity
