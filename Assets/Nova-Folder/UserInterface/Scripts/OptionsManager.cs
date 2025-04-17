@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class OptionsManager : MonoBehaviour
 {
-
+    [Header("Options Elements:")]
     public GameObject HUDOptions;  // options button
     public GameObject ClickedOptionsOpen; // full options menu UI
     public GameObject OptionsExitButton; // exit button in the options menu
-
+    [Space]
+    [Header("Script References:")]
+    [Description("All UI scripts found in the HUD other than Dialogue ")]
     public JournalManager journalManager; // Reference to the JournalManager
     public HouseManager houseManager; // Reference to the HouseManager
 

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LetterTrigger : MonoBehaviour
+public class ThornSwordTrigger : MonoBehaviour
 {
+   
     public Canvas promptCanvas;
-    public Canvas letterCanvas; 
-    public GameObject paperPlane ; // The plane object 
+    public GameObject thornSword; // The thorn object 
 
     private bool playerInTrigger = false;
 
@@ -30,19 +30,17 @@ public class LetterTrigger : MonoBehaviour
     {
         if (playerInTrigger && Input.GetKeyDown(KeyCode.E))
         {
-            if (letterCanvas != null)
-            {
-                letterCanvas.gameObject.SetActive(true);
-            }
 
-            if (paperPlane != null)
+            if (thornSword != null)
             {
-                paperPlane.SetActive(false);
+                thornSword.SetActive(false);
                 promptCanvas.gameObject.SetActive(false);
             }
 
 
-            playerInTrigger = false; // prevent repeated activations
+            playerInTrigger = false; //  prevent repeated activations
         }
     }
 }
+
+

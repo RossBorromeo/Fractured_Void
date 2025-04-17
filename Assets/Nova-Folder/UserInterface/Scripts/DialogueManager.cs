@@ -7,18 +7,24 @@ using UnityEditor.Rendering;
 
 public class DialogueManager : MonoBehaviour
 {
-    
 
+    [Header("Speaker Text boxes:")]
     public TextMeshProUGUI oliverDialogueText; // Oliver's TextBox
     public TextMeshProUGUI mabelDialogueText; // Mabel's TextBox
+    public TextMeshProUGUI roseDialogueText; //|Rose's TextBox
 
+    [Header("Speaker Dialogue boxes:")]
     public GameObject oliverDialogueBox; // Oliver's UI DialogueBox
     public GameObject mabelDialogueBox; // Mabel's UI DialogueBox
+    public GameObject roseDialogueBox; // Mabel's UI DialogueBox
 
+    [Header("Speaker Bust Image:")]
     public GameObject oliverBust; // Oliver's UI Bust 
     public GameObject mabelBust; // Mabel's UI Bust 
+    public GameObject roseBust; // Rose's UI Bust 
 
     private Queue<DialogueLine> dialogueQueue = new Queue<DialogueLine>();// Stores dialogue lines
+
     private bool isDialogueActive = false;// Track if dialogue is running
     private System.Action onDialogueEndCallback;// stores the callback for the pause 
 
@@ -84,8 +90,11 @@ public class DialogueManager : MonoBehaviour
         //hides all Dialogue elements at first 
         mabelDialogueBox.SetActive(false);
         oliverDialogueBox.SetActive(false);
+        roseDialogueBox.SetActive(false);
+
         oliverBust.SetActive(false);
         mabelBust.SetActive(false);
+        roseBust.SetActive(false);
 
         //shows all the correct character's dialogue box and busts
         if (currentLine.speakerName == "Oliver")
@@ -100,7 +109,13 @@ public class DialogueManager : MonoBehaviour
             mabelBust.SetActive(true);
             mabelDialogueText.text = currentLine.text;
         }
-        
+        else if (currentLine.speakerName == "Rose")
+        {
+            roseDialogueBox.SetActive(true);
+            roseBust.SetActive(true);
+            roseDialogueText.text = currentLine.text;
+        }
+
 
 
     }
@@ -109,8 +124,12 @@ public class DialogueManager : MonoBehaviour
     {
         mabelDialogueBox.SetActive(false);
         oliverDialogueBox.SetActive(false);
+        roseDialogueBox.SetActive(false);
+
+        roseBust.SetActive(false);
         mabelBust.SetActive(false);
         oliverBust.SetActive(false);
+
         isDialogueActive = false;
 
         ResumePlayerMovement(); // resumes movement when dialogue ends
