@@ -7,14 +7,16 @@ using UnityEngine.EventSystems;
 
 public class JournalManager : MonoBehaviour
 {
+    [Header("Journal Elements:")]
     public GameObject HUDJournal;  // the small journal icon in the HUD
     public GameObject ClickedJournalOpen; // the clicked journal UI image
     public GameObject JournalExitButton;
-
+    [Header("Sound:")]
     public AudioSource audioSource; // Adam
     public AudioClip journalClickSound; // Adam
 
-    
+    [Header("Script References:")]
+  
     public OptionsManager optionsManager; // Reference to OptionsManager
     public HouseManager houseManager; // Reference to HouseManager
 
