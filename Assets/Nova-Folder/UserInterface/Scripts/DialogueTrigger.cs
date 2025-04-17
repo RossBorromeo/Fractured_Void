@@ -126,6 +126,14 @@ public class DialogueTrigger : MonoBehaviour
 
             else if (areaName == "RoseReveal")
             {
+                dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "" });
+                dialogueLines.Add(new DialogueLine { speakerName = "Rose", text = "" });
+                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "" });
+
+            }
+
+            else if (areaName == "AfterRoseReveal")
+            {
 
                 dialogueLines.Add(new DialogueLine { speakerName = "Rose", text = "" });
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "" });
