@@ -67,7 +67,7 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
                     FlowerTaskTracker.Instance.CollectFlower();
                     TaskCompletionManagerRoseGarden.Instance.flowersCollected = true;
                     TaskCompletionManagerRoseGarden.Instance.UpdateTaskText(TaskCompletionManagerRoseGarden.Instance.findFlowersTaskText, "Collect All Seasonal Flowers");
-                    if (BlockingGates != null) BlockingGates.SetActive(false);
+                   
                     return;
                 }
                 else if (flower.name == "Marigold" && !hasMarigold)
@@ -138,6 +138,7 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
                     if (SpringLight != null) SpringLight.SetActive(true);
                     FlowerTaskTracker.Instance.PlaceFlower();
                     TaskCompletionManagerRoseGarden.Instance.UpdateTaskText(TaskCompletionManagerRoseGarden.Instance.placeFlowersTaskText, "Put Flowers in the Right Place");
+                    if (BlockingGates != null) BlockingGates.SetActive(false);
                 }
                 else if (pillarZone.name == "Pillar2TriggerZone" && hasMarigold && !placedMarigold)
                 {
