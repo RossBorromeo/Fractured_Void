@@ -58,8 +58,8 @@ public class TaskCompletionManagerFBS : MonoBehaviour
             hasRead = true;
             UpdateTaskText(planeTaskText, "Paper Plane?");
         }
-
-        if (thornSword != null && !thornSword.activeInHierarchy && !giftFound)
+       
+        if (!giftFound && ThornSwordTrigger.Instance != null && ThornSwordTrigger.Instance.pickedUpSword)
         {
             giftFound = true;
             UpdateTaskText(roseGiftTaskText, "Rose's Gift");
