@@ -1,15 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CreepingVines : MonoBehaviour
 {
-    public float riseSpeed = 1f; // Speed at which the vines rise
-    private Vector3 initialPosition; // Store the original position for reset
-    private bool isActive = false; // Control whether the vines should climb
+    public float riseSpeed = 1f;
+    private Vector3 initialPosition;
+    private bool isActive = false;
+
+    // Track which GameObjects we've already damaged this frame
+    private HashSet<GameObject> damagedThisFrame = new HashSet<GameObject>();
 
     private void Start()
     {
         initialPosition = transform.position;
-        gameObject.SetActive(false); // Start hidden
+        gameObject.SetActive(false);
     }
 
     private void Update()
@@ -18,18 +22,26 @@ public class CreepingVines : MonoBehaviour
         {
             transform.position += Vector3.up * riseSpeed * Time.deltaTime;
         }
+
+        // Clear the set every frame so player can be damaged again next frame (if needed)
+        damagedThisFrame.Clear();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+            GameObject player = other.gameObject;
 
+            // Prevent double-hit due to multiple colliders
+            if (damagedThisFrame.Contains(player)) return;
+
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
                 Debug.Log("[Vines] Player touched vines, taking damage...");
-                playerHealth.TakeDamage(); // Handles hearts and scene change if needed
+                playerHealth.TakeDamage();
+                damagedThisFrame.Add(player);
             }
         }
     }

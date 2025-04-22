@@ -8,14 +8,14 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("Health Settings")]
     [SerializeField] private int maxHearts = 6;
+    [SerializeField] private float damageCooldown = 2f; // Immunity duration in seconds
+    private float lastDamageTime = -Mathf.Infinity;     // Time of last damage taken
 
     [Header("Scene Settings")]
-    [SerializeField] private string bedroomSceneName = "Bedroom_Elizabeth_6th"; // Editable in Inspector
+    [SerializeField] private string bedroomSceneName = "Bedroom_Elizabeth_6th";
 
     [Header("Screen Fader")]
     [SerializeField] private ScreenFader screenFader;
-
-
 
     private void Start()
     {
@@ -29,8 +29,18 @@ public class PlayerHealth : MonoBehaviour
 
         healthBarUI.SetHearts(maxHearts);
     }
+
     public void TakeDamage()
     {
+        // Check if enough time has passed since last damage
+        if (Time.time - lastDamageTime < damageCooldown)
+        {
+            Debug.Log("[PlayerHealth] Damage blocked due to cooldown.");
+            return;
+        }
+
+        lastDamageTime = Time.time;
+
         if (healthBarUI == null || playerRespawn == null) return;
 
         healthBarUI.ReduceHeart();
@@ -39,7 +49,7 @@ public class PlayerHealth : MonoBehaviour
         if (remaining <= 0)
         {
             Debug.Log($"[PlayerHealth] No hearts left. Loading scene: {bedroomSceneName}");
-            SceneManager.LoadScene(bedroomSceneName); // Full death = scene reload
+            SceneManager.LoadScene(bedroomSceneName);
         }
         else
         {
@@ -59,6 +69,4 @@ public class PlayerHealth : MonoBehaviour
             }
         }
     }
-
-
 }
