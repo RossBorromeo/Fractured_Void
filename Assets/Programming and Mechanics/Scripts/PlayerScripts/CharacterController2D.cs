@@ -117,52 +117,56 @@ public class CharacterController2D : MonoBehaviour
     private void TryStepUp()
     {
         Vector3 moveDir = new Vector3(rb.velocity.x, 0, rb.velocity.z).normalized;
-        if (moveDir == Vector3.zero || !isGrounded)
+
+        // Debug current position and grounded status
+        Debug.Log($"[TryStepUp] Position: {rb.position}, Grounded: {isGrounded}");
+
+        if (moveDir == Vector3.zero)
         {
             ledgeStuckTimer = 0f;
             isBlockedForward = false;
+            Debug.Log("[TryStepUp] Not moving - no ledge logic applied.");
             return;
         }
 
-        Vector3 origin = transform.position + Vector3.up * 0.1f;
-        Vector3 upperOrigin = transform.position + Vector3.up * stepHeight;
+        // Capsule for forward blocking detection
+        CapsuleCollider col = capsuleCollider;
+        Vector3 point1 = col.bounds.center + Vector3.up * (col.height / 2 - col.radius);
+        Vector3 point2 = col.bounds.center + Vector3.down * (col.height / 2 - col.radius);
 
-        bool hitLow = Physics.Raycast(origin, moveDir, stepCheckDistance, stepLayer);
-        bool hitHigh = Physics.Raycast(upperOrigin, moveDir, stepCheckDistance, stepLayer);
+        bool isBlocked = Physics.CapsuleCast(point1, point2, col.radius, moveDir, out RaycastHit hit, stepCheckDistance, stepLayer);
 
-        if (hitLow)
+        if (!isGrounded && isBlocked && rb.velocity.y <= 0.1f)
         {
-            if (!hitHigh)
+            ledgeStuckTimer += Time.fixedDeltaTime;
+            isBlockedForward = true;
+
+            Debug.Log($"[TryStepUp] Blocked against ledge. Timer: {ledgeStuckTimer:F2}");
+
+            if (ledgeStuckTimer >= ledgeStuckDuration)
             {
-                // Can step up
-                rb.position += Vector3.up * stepHeight;
+                // Apply the unstick nudge
+                Vector3 pushDirection = (-moveDir * 0.15f) + Vector3.down * 0.2f;
+                rb.MovePosition(rb.position + pushDirection);
+                rb.velocity = new Vector3(0, rb.velocity.y, 0);
+
+                Debug.Log("[TryStepUp] Player nudged off ledge!");
+
                 ledgeStuckTimer = 0f;
-                isBlockedForward = false;
-            }
-            else
-            {
-                // Can't step — blocked
-                ledgeStuckTimer += Time.fixedDeltaTime;
-                isBlockedForward = true;
-
-                if (ledgeStuckTimer >= ledgeStuckDuration)
-                {
-                    // Nudge player slightly back and down to "unstick"
-                    rb.position += (-moveDir * 0.1f) + Vector3.down * 0.1f;
-
-                    // Optionally reduce horizontal velocity to prevent immediate re-stick
-                    rb.velocity = new Vector3(0, rb.velocity.y, 0);
-
-                    ledgeStuckTimer = 0f;
-                }
             }
         }
         else
         {
+            if (isBlocked)
+                Debug.Log("[TryStepUp] Blocked, but grounded or moving upward – not nudging.");
+            else
+                Debug.Log("[TryStepUp] Not blocked – reset timer.");
+
             ledgeStuckTimer = 0f;
             isBlockedForward = false;
         }
     }
+
 
 
 
