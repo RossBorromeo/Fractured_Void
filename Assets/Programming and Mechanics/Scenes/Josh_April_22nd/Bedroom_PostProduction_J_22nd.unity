@@ -10085,6 +10085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHearts: 6
+  damageCooldown: 2
   bedroomSceneName: Bedroom_Elizabeth_6th
   screenFader: {fileID: 0}
 --- !u!135 &1177572866
@@ -14780,7 +14781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd5c5b38a96f53419390fba0bfc7497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Rose_Garden_PostProduction_J_19th
+  sceneName: Rose_Garden_PostProduction_J_22nd
 --- !u!65 &1823865997
 BoxCollider:
   m_ObjectHideFlags: 0
