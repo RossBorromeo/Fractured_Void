@@ -24228,7 +24228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd5c5b38a96f53419390fba0bfc7497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Rose_Garden_PostProduction_R_22nd
+  sceneName: Rose_Garden_PostProduction_R_24th
 --- !u!65 &1823865997
 BoxCollider:
   m_ObjectHideFlags: 0
