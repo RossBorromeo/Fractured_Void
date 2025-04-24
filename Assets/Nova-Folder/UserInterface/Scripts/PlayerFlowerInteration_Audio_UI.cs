@@ -65,9 +65,6 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
                     Destroy(flower);
                     PlaySound(pickupSound);
                     FlowerTaskTracker.Instance.CollectFlower();
-                    TaskCompletionManagerRoseGarden.Instance.flowersCollected = true;
-                    TaskCompletionManagerRoseGarden.Instance.UpdateTaskText(TaskCompletionManagerRoseGarden.Instance.findFlowersTaskText, "Collect All Seasonal Flowers");
-                   
                     return;
                 }
                 else if (flower.name == "Marigold" && !hasMarigold)
@@ -81,8 +78,7 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
                     Destroy(flower);
                     PlaySound(pickupSound);
                     FlowerTaskTracker.Instance.CollectFlower();
-                    TaskCompletionManagerRoseGarden.Instance.flowersCollected = true;
-                    TaskCompletionManagerRoseGarden.Instance.UpdateTaskText(TaskCompletionManagerRoseGarden.Instance.findFlowersTaskText, "Collect All Seasonal Flowers");
+                    
                     return;
                 }
                 else if (flower.name == "Aster" && !hasAster)
@@ -98,8 +94,7 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
 
                     PlaySound(pickupSound);
                     FlowerTaskTracker.Instance.CollectFlower();
-                    TaskCompletionManagerRoseGarden.Instance.flowersCollected = true;
-                    TaskCompletionManagerRoseGarden.Instance.UpdateTaskText(TaskCompletionManagerRoseGarden.Instance.findFlowersTaskText, "Collect All Seasonal Flowers");
+                    
                     if (Puzzle1PortalBack != null) Puzzle1PortalBack.SetActive(true);
                     if (Vines != null) Vines.SetActive(false);
                     return;
@@ -115,8 +110,7 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
                     Destroy(flower);
                     PlaySound(pickupSound);
                     FlowerTaskTracker.Instance.CollectFlower();
-                    TaskCompletionManagerRoseGarden.Instance.flowersCollected = true;
-                    TaskCompletionManagerRoseGarden.Instance.UpdateTaskText(TaskCompletionManagerRoseGarden.Instance.findFlowersTaskText, "Collect All Seasonal Flowers");
+                    
                     return;
                 }
             }

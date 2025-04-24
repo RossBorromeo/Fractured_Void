@@ -672,7 +672,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21, y: -1093}
+  m_AnchoredPosition: {x: 21, y: -1403}
   m_SizeDelta: {x: 207.5341, y: 244.6314}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &860133204
@@ -808,7 +808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 61, y: -1478}
+  m_AnchoredPosition: {x: 61, y: -1788}
   m_SizeDelta: {x: 207.5341, y: 244.6314}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1260218979
@@ -976,9 +976,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\r\nJoshua Thompson\r\n\r\n\r\nElizabeth Tuzhilina\r\n\r\n\r\nJoshua Thompson\r\n\r\n\r\nEmmanuella
-    Ibitola\r\n\r\n\r\nElizabeth Tuzhilina\r\n\r\n  \n\r\nRoss Borromeo\n\n\r\n\r\r\nElizabeth
-    Tuzhilina\r\nJoshua Thompson\r\n\r\n\r\nAdam Kavanagh \r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+  m_text: "\r\nJoshua Thompson\r\n\r\n\r\nElizabeth Tuzhilina\r\n\r\n\r\nRoss Borromeo\n\n\nJoshua
+    Thompson\r\n\r\n\r\nEmmanuella Ibitola\r\n\r\n\r\nElizabeth Tuzhilina\r\n\r\n 
+    \n\r\nRoss Borromeo\n\n\r\n\r\r\nElizabeth Tuzhilina\r\nJoshua Thompson\r\n\r\n\r\nAdam
+    Kavanagh \r\n\r\n\r\n\n\rRoss Borromeo\n\r\n\r\n\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95779b8fd1e6bcf4e8a9088c0fb908da, type: 2}
   m_sharedMaterial: {fileID: 5222565431739436279, guid: 95779b8fd1e6bcf4e8a9088c0fb908da, type: 2}
@@ -1091,7 +1092,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18, y: -2430}
+  m_AnchoredPosition: {x: -18, y: -2740}
   m_SizeDelta: {x: 1198, y: 428}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1768190372
@@ -1186,10 +1187,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nTeam Lead  \r\n\r\n\r\nScrum Master\r\n\r\n\r\nProgramming & Mechanics
-    \r\n\r\n\r\n2D Art & Animation\r\n\r\n\r\nUser Interface Design & Development\r\n\r\n\r\nLevel
-    & Environment Design\r\n\r\n\r\nNarrative Design\r\n\r\n\r\n\r\nAudio & Sound
-    Design\r\n\r\n\r\n\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+  m_text: "\nTeam Lead  \r\n\r\n\r\nScrum Master\n\n\nAdmin\r\n\r\n\r\nProgramming
+    & Mechanics \r\n\r\n\r\n2D Art & Animation\r\n\r\n\r\nUser Interface Design &
+    Development\r\n\r\n\r\nLevel & Environment Design\r\n\r\n\r\nNarrative Design\r\n\r\n\r\n\r\nAudio
+    & Sound Design\r\n\r\n\r\n\nUser Testing\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95779b8fd1e6bcf4e8a9088c0fb908da, type: 2}
   m_sharedMaterial: {fileID: 5222565431739436279, guid: 95779b8fd1e6bcf4e8a9088c0fb908da, type: 2}
@@ -1302,7 +1303,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 55, y: -1215}
+  m_AnchoredPosition: {x: 55, y: -1525}
   m_SizeDelta: {x: 207.5341, y: 244.6314}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1899850909
@@ -1705,7 +1706,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17, y: -1512}
+  m_AnchoredPosition: {x: 17, y: -1822}
   m_SizeDelta: {x: 207.5341, y: 244.6314}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2091063552

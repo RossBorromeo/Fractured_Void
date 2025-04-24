@@ -111,7 +111,8 @@ public class DialogueTrigger : MonoBehaviour
                 dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "So, Spring, Summer, Autumn, Winter... Pink, Orange.." });
                 dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "And all I have to do is figure out which one is Autumn and Winter..." });
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "And follow that exact order!" });
-                
+                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "I'll write a hint in the Journal if you get stuck" });
+
             }
             else if (areaName == "Puzzle2.3")
             {

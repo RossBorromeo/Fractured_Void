@@ -39,6 +39,7 @@ public class TaskCompletionManagerRoseGarden : MonoBehaviour
             UpdateTaskText(findFlowersTaskText, "Collect All Seasonal flowers");
         }
 
+
         // checking if flowers have been placed
         if (flowersPlaced == true)
         {
