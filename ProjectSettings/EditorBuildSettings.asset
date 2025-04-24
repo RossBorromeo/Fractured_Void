@@ -12,20 +12,20 @@ EditorBuildSettings:
     path: Assets/Nova-Folder/UserInterface/Scenes/OpeningCutscene.unity
     guid: 5778aeeca852eba4bac527bd1c48d900
   - enabled: 1
-    path: Assets/Nova-Folder/LevelDesign/Scenes/Ross_April_24th/Bedroom_PostProduction_R_24th.unity
-    guid: 0034139d5a6fc0b429ac1098014bc216
+    path: Assets/Programming and Mechanics/Scenes/Josh_April_24th/Bedroom_PostProduction_J_24th.unity
+    guid: fd455bc13770c1c4b9ecf32dae004d37
   - enabled: 1
-    path: Assets/Nova-Folder/LevelDesign/Scenes/Ross_April_24th/Bedroom_Respawn_R.unity
-    guid: a7f341ffd34d745408aba05f6ae95cb4
+    path: Assets/Programming and Mechanics/Scenes/Josh_April_24th/Bedroom_Respawn_J.unity
+    guid: f6a83f99471876c41b384c666febbb3c
   - enabled: 1
-    path: Assets/Nova-Folder/LevelDesign/Scenes/Ross_April_24th/Rose_Garden_PostProduction_R_24th.unity
-    guid: 3f9be1e71c0437d43abcde4ee6180b7a
+    path: Assets/Programming and Mechanics/Scenes/Josh_April_24th/Rose_Garden_PostProduction_J_24th.unity
+    guid: 506dd38d02e89db41950f069f70da7e7
   - enabled: 1
     path: Assets/Nova-Folder/UserInterface/Scenes/FlashbackCutscene.unity
     guid: a3e344495bf7b5d4787ca0c31c2d5572
   - enabled: 1
-    path: Assets/Nova-Folder/LevelDesign/Scenes/Ross_April_24th/FlashBack_Scene_R_24th.unity
-    guid: 8de609e918189584191565f0ce239aa8
+    path: Assets/Programming and Mechanics/Scenes/Josh_April_24th/FlashBack_Scene_J_24th.unity
+    guid: 88db49426ca8d0546896b007ca8b7bca
   - enabled: 1
     path: Assets/Nova-Folder/UserInterface/Scenes/FinalCredits.unity
     guid: 658e3650a51a4f8459096518a82de612
