@@ -131,7 +131,7 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
                     Debug.Log("Placed Tulip on Pillar 1");
                     if (SpringLight != null) SpringLight.SetActive(true);
                     FlowerTaskTracker.Instance.PlaceFlower();
-                    TaskCompletionManagerRoseGarden.Instance.UpdateTaskText(TaskCompletionManagerRoseGarden.Instance.placeFlowersTaskText, "Put Flowers in the Right Place");
+                    
                     if (BlockingGates != null) BlockingGates.SetActive(false);
                 }
                 else if (pillarZone.name == "Pillar2TriggerZone" && hasMarigold && !placedMarigold)
@@ -141,7 +141,7 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
                     Debug.Log("Placed Marigold on Pillar 2");
                     if (SummerLight != null) SummerLight.SetActive(true);
                     FlowerTaskTracker.Instance.PlaceFlower();
-                    TaskCompletionManagerRoseGarden.Instance.UpdateTaskText(TaskCompletionManagerRoseGarden.Instance.placeFlowersTaskText, "Put Flowers in the Right Place");
+                    
                 }
                 else if (pillarZone.name == "Pillar3TriggerZone" && hasAster && !placedAster)
                 {
@@ -150,7 +150,7 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
                     Debug.Log("Placed Aster on Pillar 3");
                     if (AutumnLight != null) AutumnLight.SetActive(true);
                     FlowerTaskTracker.Instance.PlaceFlower();
-                    TaskCompletionManagerRoseGarden.Instance.UpdateTaskText(TaskCompletionManagerRoseGarden.Instance.placeFlowersTaskText, "Put Flowers in the Right Place");
+       
                 }
                 else if (pillarZone.name == "Pillar4TriggerZone" && hasPoinsettia && !placedPoinsettia)
                 {
@@ -159,11 +159,14 @@ public class PlayerFlowerInteration_Audio_UI : MonoBehaviour
                     Debug.Log("Placed Poinsettia on Pillar 4");
                     if (WinterLight != null) WinterLight.SetActive(true);
                     FlowerTaskTracker.Instance.PlaceFlower();
-                    TaskCompletionManagerRoseGarden.Instance.UpdateTaskText(TaskCompletionManagerRoseGarden.Instance.placeFlowersTaskText, "Put Flowers in the Right Place");
+                    
                 }
 
                 if (placedTulip && placedMarigold && placedAster && placedPoinsettia)
                 {
+                    //new updated text line here 
+                    TaskCompletionManagerRoseGarden.Instance.UpdateTaskText(TaskCompletionManagerRoseGarden.Instance.placeFlowersTaskText, "Put Flowers in the Right Place");
+
                     Debug.Log("All flowers placed! Opening gate...");
                     if (gateAnimator != null)
                     {
