@@ -11,6 +11,16 @@ This section provides a list of sources, references, and assets used in the deve
 - **C# Scripting in Unity** – [Microsoft C# Docs](https://learn.microsoft.com/en-us/dotnet/csharp/)
 - **Scene Management & Loading** – [Unity SceneManager Guide](https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.html)
 - **Time Scaling & Pausing Mechanics** – [Time.timeScale Documentation](https://docs.unity3d.com/ScriptReference/Time-timeScale.html)
+  
+  ### 📺 Video Tutorials
+
+- **Creating a 3D Platformer in Unity** – [MuddyWolf](https://www.youtube.com/watch?v=GeeKVPwM5Xw&t=1111s&ab_channel=MuddyWolf)
+- **Third Person Controller with Animation** – [Jayanam](https://www.youtube.com/watch?v=rO19dA2jksk&ab_channel=Jayanam)
+- **Basic Player Movement** – [Chris' Tutorials](https://www.youtube.com/watch?v=FXXc0hTWIMs&ab_channel=Chris'Tutorials)
+- **How to Make a Video Game (Beginner Series)** – [Brackeys](https://www.youtube.com/watch?v=hkaysu1Z-N8&ab_channel=Brackeys)
+- **Custom Character Controller in Unity** – [Brackeys](https://www.youtube.com/watch?v=dwcT-Dch0bA&ab_channel=Brackeys)
+- **Making a 3D Game in Unity** – [NotSlot](https://www.youtube.com/watch?v=WKZ-FLo7ACM&ab_channel=NotSlot)
+
 
 ### 🎨 UI Assets 
 - **Buttons For Settings and Options Menu** – [[Itch.io free asset](https://cazwolf.itch.io/caz-pixel-keyboard)]
