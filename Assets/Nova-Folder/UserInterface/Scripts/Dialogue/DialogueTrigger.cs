@@ -86,7 +86,7 @@ public class DialogueTrigger : MonoBehaviour
             else if (areaName == "Puzzle1")
             {
 
-                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "That's a long way up! ." });
+                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "I wonder where this portal leads?" });
             }
             else if (areaName == "Puzzle1.2")
             {
@@ -118,6 +118,11 @@ public class DialogueTrigger : MonoBehaviour
             {
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "Ehhhh, I don’t remember it looking like this... " });
                 dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "Oh perfect! A portal straight back. What could possibly go wrong" });
+            }
+            else if (areaName == "Puzzle2.4")
+            {
+                dialogueLines.Add(new DialogueLine { speakerName = "Oliver", text = "Hmm... I think we followed the right pattern but we havent made it to the end." });
+                dialogueLines.Add(new DialogueLine { speakerName = "Mabel", text = "Maybe the pattern repeats, like the seasons" });
             }
             else if (areaName == "Puzzle3")
             {
