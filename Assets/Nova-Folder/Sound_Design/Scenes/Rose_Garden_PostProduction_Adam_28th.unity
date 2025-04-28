@@ -106667,7 +106667,7 @@ AudioSource:
   m_GameObject: {fileID: 850472202}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3003894019898590637, guid: 2a51f242372c4c941959dc9894997c30, type: 2}
   m_audioClip: {fileID: 8300000, guid: 5d84e5c5228570a4eadf5856790d346a, type: 3}
   m_Resource: {fileID: 8300000, guid: 5d84e5c5228570a4eadf5856790d346a, type: 3}
   m_PlayOnAwake: 1
@@ -189080,7 +189080,7 @@ AudioSource:
   m_GameObject: {fileID: 1530133036}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3003894019898590637, guid: 2a51f242372c4c941959dc9894997c30, type: 2}
   m_audioClip: {fileID: 8300000, guid: 5d84e5c5228570a4eadf5856790d346a, type: 3}
   m_Resource: {fileID: 8300000, guid: 5d84e5c5228570a4eadf5856790d346a, type: 3}
   m_PlayOnAwake: 1
@@ -227107,6 +227107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1837036198}
+  - component: {fileID: 1837036199}
   m_Layer: 5
   m_Name: Sliders
   m_TagString: Untagged
@@ -227137,6 +227138,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1837036199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837036197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a6a11c373989614f85ed50c49851c55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainSlider: {fileID: 1443922051}
+  sfxSlider: {fileID: 488322379}
+  ambienceSlider: {fileID: 1522531975}
+  musicSlider: {fileID: 1599879841}
+  mainAudioSource: {fileID: 0}
+  sfxAudioSource: {fileID: 0}
+  ambienceAudioSource: {fileID: 0}
+  musicAudioSource: {fileID: 0}
 --- !u!43 &1837520066
 Mesh:
   m_ObjectHideFlags: 0
