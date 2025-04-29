@@ -322,11 +322,11 @@ AudioSource:
   m_GameObject: {fileID: 73968291}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 2a51f242372c4c941959dc9894997c30, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9a60573bb79478144a5621dbb0caf09e, type: 3}
-  m_Resource: {fileID: 8300000, guid: 9a60573bb79478144a5621dbb0caf09e, type: 3}
+  OutputAudioMixerGroup: {fileID: -5146261905333381320, guid: 2a51f242372c4c941959dc9894997c30, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 47c3e10965b14354f86a496cd64bb970, type: 3}
+  m_Resource: {fileID: 8300000, guid: 47c3e10965b14354f86a496cd64bb970, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -931,7 +931,6 @@ GameObject:
   - component: {fileID: 212533652}
   - component: {fileID: 212533654}
   - component: {fileID: 212533653}
-  - component: {fileID: 212533655}
   m_Layer: 5
   m_Name: AUDIO
   m_TagString: Untagged
@@ -1057,26 +1056,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212533651}
   m_CullTransparentMesh: 1
---- !u!114 &212533655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212533651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a6a11c373989614f85ed50c49851c55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainSlider: {fileID: 431577401}
-  sfxSlider: {fileID: 1444109672}
-  ambienceSlider: {fileID: 960242850}
-  musicSlider: {fileID: 686096595}
-  mainAudioSource: {fileID: 0}
-  sfxAudioSource: {fileID: 0}
-  ambienceAudioSource: {fileID: 0}
-  musicAudioSource: {fileID: 73968294}
 --- !u!1 &264699825
 GameObject:
   m_ObjectHideFlags: 0
@@ -5570,6 +5549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1599980820}
   - component: {fileID: 1599980821}
+  - component: {fileID: 1599980822}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -5605,6 +5585,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ad54ae4b94f8dd47a9e0f168de6b403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1599980822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599980819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a6a11c373989614f85ed50c49851c55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainSlider: {fileID: 431577401}
+  sfxSlider: {fileID: 1444109672}
+  ambienceSlider: {fileID: 960242850}
+  musicSlider: {fileID: 686096595}
+  mainAudioSource: {fileID: 73968294}
+  sfxAudioSource: {fileID: 73968294}
+  ambienceAudioSource: {fileID: 73968294}
+  musicAudioSource: {fileID: 73968294}
 --- !u!1 &1632708152
 GameObject:
   m_ObjectHideFlags: 0
