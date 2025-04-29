@@ -6,26 +6,26 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Nova-Folder/UserInterface/Scenes/MainMenu.unity
-    guid: 2dbbde9752e508a4f8e7c100ea5ac7e5
+    path: Assets/Nova-Folder/LevelDesign/Scenes/Final_Build_29th/MainMenu.unity
+    guid: 270f174fdac46424db100a6cb62a7360
   - enabled: 1
     path: Assets/Nova-Folder/UserInterface/Scenes/OpeningCutscene.unity
     guid: 5778aeeca852eba4bac527bd1c48d900
   - enabled: 1
-    path: Assets/Nova-Folder/LevelDesign/Scenes/Ross_April_27th/Bedroom_PostProduction_R_27th.unity
-    guid: 13aeccc58c0a7064391bed03545c3751
+    path: Assets/Nova-Folder/LevelDesign/Scenes/Final_Build_29th/Bedroom_PostProduction_R_29th.unity
+    guid: 04569454829b4894aa7aa78b7e1885bf
   - enabled: 1
-    path: Assets/Nova-Folder/LevelDesign/Scenes/Ross_April_27th/Rose_Garden_PostProduction_R_27th.unity
-    guid: 502c381818d43984193622b7c45f50db
+    path: Assets/Nova-Folder/LevelDesign/Scenes/Final_Build_29th/Rose_Garden_PostProduction_R_29th.unity
+    guid: ae33c05da6d812d4ebf1db37263589f8
   - enabled: 1
-    path: Assets/Nova-Folder/LevelDesign/Scenes/Ross_April_27th/Bedroom_Respawn_R_27th.unity
-    guid: 78f857a77cf594d4b951a63f56c9284f
+    path: Assets/Nova-Folder/LevelDesign/Scenes/Final_Build_29th/Bedroom_Respawn_R_29th.unity
+    guid: 50823663070689f42a88d44bc9c93ddb
   - enabled: 1
     path: Assets/Nova-Folder/UserInterface/Scenes/FlashbackCutscene.unity
     guid: a3e344495bf7b5d4787ca0c31c2d5572
   - enabled: 1
-    path: Assets/Nova-Folder/LevelDesign/Scenes/Ross_April_27th/FlashBack_Scene_R_27th.unity
-    guid: bc56513bad5c94e41be93b16e06a283b
+    path: Assets/Nova-Folder/LevelDesign/Scenes/Final_Build_29th/FlashBack_Scene_R_29th.unity
+    guid: dac99abbd218eca4998e44a84d5dd6a3
   - enabled: 1
     path: Assets/Nova-Folder/UserInterface/Scenes/FinalCredits.unity
     guid: 658e3650a51a4f8459096518a82de612
