@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class GateAudioTrigger : MonoBehaviour
 {
-    [Tooltip("The audio clip to play when the game starts.")]
+    [Tooltip("The audio clip to play when the gate is triggered.")]
     [SerializeField] private AudioClip gameAudio;
 
     private AudioSource audioSource;
@@ -17,16 +17,20 @@ public class GateAudioTrigger : MonoBehaviour
             audioSource = gameObject.AddComponent<AudioSource>();
         }
 
-        // Play the audio if the clip is assigned
-        if (gameAudio != null)
-        {
-            audioSource.clip = gameAudio;
-            audioSource.playOnAwake = false; // Ensure it doesn't play automatically
-            audioSource.Play();
-        }
-        else
+        // Ensure the audio clip is assigned
+        if (gameAudio == null)
         {
             Debug.LogWarning("GameAudio clip is not assigned in the Inspector.", this);
+        }
+    }
+
+    // Public method to play the audio
+    public void TriggerGateAudio()
+    {
+        if (gameAudio != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(gameAudio);
+            Debug.Log("Gate audio triggered.");
         }
     }
 }
