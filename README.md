@@ -75,6 +75,11 @@ This section provides a list of sources, references, and assets used in the deve
 - **Particle Pack** – [Unity Asset Store](https://assetstore.unity.com/packages/vfx/particles/particle-pack-127325)
 - **Persian Carpets (URP)** – [Unity Asset Store](https://assetstore.unity.com/packages/3d/props/persiang-carpets-urp-261455)
 - **Tools Lowpoly Lite** – [Unity Asset Store](https://assetstore.unity.com/packages/3d/props/tools/tools-lowpoly-lite-278877)
+- **Portals in Unity** - [Youtube](https://www.youtube.com/watch?v=GeeKVPwM5Xw)
+- **Black & White Shader - Unity (URP/HDRP) Shader Graph** - [Youtube](https://www.youtube.com/watch?v=6CoXC3TEu24)
+- **Creating Shooting Stars with Unity’s Particle Systems** - [Youtube](https://www.youtube.com/watch?v=T2XWzB0QNcQ)
+- **Unity Tutorial: Falling Leaves Particle System** - [Youtube](https://www.youtube.com/watch?v=wQJ0_TqoLr4)
+  
 
 ### 🛠 Tools & Plugins
 - **Unity Version Used:** _[2023.2.20f1]_
