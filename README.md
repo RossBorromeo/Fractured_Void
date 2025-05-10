@@ -1,6 +1,23 @@
 # Fractured_Void
 Nova Games Collaborative Game, Fractured Void 
 
+### 🛠 Tools & Plugins
+- **Unity Version Used:** _[2023.2.20f1]_
+- **Packages Used:**
+  - TextMeshPro for UI Text
+  - Cinemachine
+  - ProBuilder
+- **Software Used:**
+  - Krita
+  - PaintToolSai
+  - Aseprite
+  - ClipChamp
+  - OBS Studio
+  - Microsoft Forms
+  - Davinci Resolve
+  - Reaper
+  - Audacity
+  - Soundly
 ## 📚 Sources & References
 
 This section provides a list of sources, references, and assets used in the development of this project.
@@ -23,10 +40,14 @@ This section provides a list of sources, references, and assets used in the deve
 - **Buttons For Settings and Options Menu** – [Itch.io free asset](https://cazwolf.itch.io/caz-pixel-keyboard)
 - **Pixel UI Buttons (Exit button only)** – [Itch.io](https://normiebuster.itch.io/pixel-ui-buttons)
 - **Background For Settings Menu** – [CraftPix.Net](https://craftpix.net/freebies/free-sky-with-clouds-background-pixel-art-set/?num=3&count=760&sq=pixel%20ui&pos=11)
+- **White Printer Paper on Wooden Table(Before Pixel Editing)** – [Unsplash](https://unsplash.com/photos/white-printer-paper-on-brown-wooden-table-qqz06qPB_F0)
+- **Paper Plane 3D Model** –[Sketchfab](https://sketchfab.com/3d-models/paper-plane-asset-8a5f6a2a07b64522bf4b904d4a057dfb)
+  
 - **HandWritten Font** – [fontspace](https://www.fontspace.com/rdj-hand-font-f21147)
 - **Dialogue Stylised Pixel Font** – [1001Fonts](https://www.1001fonts.com/bitgamefont-font.html)
 - **Regular Pixel Font** – [1001Fonts](https://www.1001fonts.com/vcr-jp-font.html)
 - **Title Font Original (before Pixel editing)** – [fontspace](https://www.fontspace.com/farewell-font-f47249)
+- **Dads Letter Font/ Pixel Love Font** –[Fontspace](https://www.fontspace.com/pixel-love-font-f9949)
 
 ### 🔎 Technical References for UI Implementation 
 
@@ -48,11 +69,26 @@ This section provides a list of sources, references, and assets used in the deve
 - **How to play a video in Unity** – [YouTube](https://www.youtube.com/watch?v=-XzVq7qIuys)
 - **Add an Intro Cutscene (useful for after credits)** – [YouTube](https://www.youtube.com/watch?v=NnPDJfvLeWQ)
 
+ #### *Cutscene Implementation (Skip Button)*
+- **Skip video** – [YouTube](https://www.youtube.com/watch?v=rKEk433Ru0c)
+- **Input.mousePosition** - [Unity Docs](https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Input-mousePosition.html)
+- **Detecting Idle Player in Unity** – [GitConnected](https://levelup.gitconnected.com/how-to-detect-if-the-player-is-idle-in-unity-2b2227e49292)
+- **Detecting Idle Player in Unity** – [Ryan McCoach](https://ryanjmccoach.medium.com/unity-detecting-idle-player-d0384e490f3b)
+- **Mouse Position** – [YouTube](https://www.youtube.com/watch?v=5VaV7W20rsk)
+
+
+#### *Rolling Credits*
+- **Rolling Credits** – [YouTube](https://www.youtube.com/watch?v=yDkZ5QIkfSc)
+- **Scrolling Credits** – [YouTube](https://www.youtube.com/watch?v=cj6hwCjiVZE)
+
+
 #### *Other Code Used*
 - **Strikethrough Source** – [Unity3D Docs](https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/TextMeshPro/RichTextStrikethroughUnderline.html)
-
+- **Settings Menu (window view)** – [YouTube](https://www.youtube.com/watch?v=YOaYQrN1oYQ)
+-  **GameObject.activeInHierarchy** – [Unity Docs](https://docs.unity3d.com/6000.0/Documentation/ScriptReference/GameObject-activeInHierarchy.html)
+- **Blinking effect(Not implemented)** – [YouTube](https://www.youtube.com/watch?v=4yUBcEwNV-8)
 #### *Typing*
-- **Typing text effect (Properly implemented in Post)** – [gamedevbeginner.com](https://gamedevbeginner.com/how-to-create-a-typewriter-text-effect-in-unity/)
+- **Typing text effect (Not implemented )** – [gamedevbeginner.com](https://gamedevbeginner.com/how-to-create-a-typewriter-text-effect-in-unity/)
 
 ### 🎶 Audio & Sound Effects
 - **Background Music** – [Original Composition]
@@ -81,20 +117,4 @@ This section provides a list of sources, references, and assets used in the deve
 - **Unity Tutorial: Falling Leaves Particle System** - [Youtube](https://www.youtube.com/watch?v=wQJ0_TqoLr4)
   
 
-### 🛠 Tools & Plugins
-- **Unity Version Used:** _[2023.2.20f1]_
-- **Packages Used:**
-  - TextMeshPro for UI Text
-  - Cinemachine
-  - ProBuilder
-- **Software Used:**
-  - Krita
-  - Other Drawing software
-  - Aseprite
-  - ClipChamp
-  - OBS Studio
-  - Microsoft Forms
-  - Davinci Resolve
-  - Reaper
-  - Audacity
-  - Soundly
+
